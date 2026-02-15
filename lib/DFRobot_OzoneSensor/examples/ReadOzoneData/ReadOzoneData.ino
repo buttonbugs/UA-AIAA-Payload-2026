@@ -26,7 +26,6 @@ DFRobot_OzoneSensor Ozone;
 
 void setup() 
 {
-  Serial.begin(9600);
   while(!Ozone.begin(Ozone_IICAddress)){
     Serial.println("I2c device number error !");
     delay(1000);
