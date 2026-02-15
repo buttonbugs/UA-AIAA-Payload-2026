@@ -1,18 +1,31 @@
 #include <Arduino.h>
+#include "DFRobot_OzoneSensor.h"
+#include "config.h"
 
-// put function declarations here:
-int myFunction(int, int);
 
+
+DFRobot_OzoneSensor Ozone;
 void setup() {
-  // put your setup code here, to run once:
-  int result = myFunction(2, 3);
+    Serial.begin(9600);
+    while(!Ozone.begin(Ozone_IICAddress)) {
+        Serial.println("I2c device number error !");
+        delay(1000);
+    }
+    Serial.println("I2c connect success !");
+    /*   Set iic mode, active mode or passive mode
+        MEASURE_MODE_AUTOMATIC            // active  mode
+        MEASURE_MODE_PASSIVE              // passive mode
+    */
+    Ozone.setModes(MEASURE_MODE_PASSIVE);
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-}
-
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
+    /*   Smooth data collection
+        COLLECT_NUMBER                    // The collection range is 1-100
+    */
+    int16_t ozoneConcentration = Ozone.readOzoneData(COLLECT_NUMBER);
+    Serial.print("Ozone concentration is ");
+    Serial.print(ozoneConcentration);
+    Serial.println(" PPB.");
+    delay(1000);
 }
