@@ -1,4 +1,4 @@
-# UA-AIAA-2026
+# UA AIAA Payload 2026
 
 **Board:** Arduino Nano
 
