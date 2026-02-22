@@ -6,6 +6,7 @@
 #include "read_sgp40.h"
 #include "read_imu.h"
 #include "read_bme280.h"
+#include "write_sd.h"
 
 uint8_t voc = 0;
 
@@ -14,6 +15,7 @@ void setup() {
     delay(2000);
     Serial.begin(9600);
     init_bme280();
+    init_sd();
 }
 
 void loop() {

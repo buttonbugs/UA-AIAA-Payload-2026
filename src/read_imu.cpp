@@ -3,16 +3,16 @@
 #define AD0_VAL 1      // The value of the last bit of the I2C address (1 for 0x69, 0 for 0x68)
 ICM_20948_I2C myICM;   // Create an I2C object
 
-float imu_accX = 1;
-float imu_accY = 1;
-float imu_accZ = 1;
-float imu_gyrX = 1;
-float imu_gyrY = 1;
-float imu_gyrZ = 1;
-float imu_magX = 1;
-float imu_magY = 1;
-float imu_magZ = 1;
-float imu_temp = 1;
+float imu_accX = 0;
+float imu_accY = 0;
+float imu_accZ = 0;
+float imu_gyrX = 0;
+float imu_gyrY = 0;
+float imu_gyrZ = 0;
+float imu_magX = 0;
+float imu_magY = 0;
+float imu_magZ = 0;
+float imu_temp = 0;
 
 void init_imu() {
     myICM.enableDebugging();

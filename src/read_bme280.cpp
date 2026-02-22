@@ -15,7 +15,6 @@ void init_bme280() {
     // Check your sensor's I2C address, could also be 0x77
     if (!bme.begin(0x76)) {
         Serial.println("Could not find a valid BME280 sensor, check wiring!");
-        while (1);
     }
     Serial.println("BME280 sensor connected!");
 }
