@@ -6,6 +6,7 @@
 #include "read_sgp40.h"
 #include "read_imu.h"
 #include "read_bme280.h"
+#include "read_ultrasonic.h"
 #include "write_sd.h"
 
 uint8_t voc = 0;
