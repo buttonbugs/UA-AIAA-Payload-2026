@@ -18,9 +18,9 @@ This repository includes the payload codes for the [UA AIAA](https://uaaiaa.org/
 | - | - | - |
 | SDA | A4 | I²C |
 | SCL | A5 | I²C |
-| SCK | D13 | SPI |
-| MISO | D12 | SPI |
-| MOSI | D11 | SPI |
+| CLK / SCK | D13 | SPI |
+| DO / MISO | D12 | SPI |
+| DI / MOSI | D11 | SPI |
 | CS for the SD Card Reader | D10 (or any) | SPI |
 
 **Pin Configuration for Ultrasonic Sensor**

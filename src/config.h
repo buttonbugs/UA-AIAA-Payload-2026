@@ -9,6 +9,8 @@
 
 #define ULTRASONIC_TIMEOUT 30000    // microseconds, prevent the code from freezing when unable to get data from the ultrasonic sensor
 
+#define E_DECIMAL_PLACE 7           // Scientific notation decimal places, Arduino float data types typically provide 6 to 7 decimal digits of precision
+
 /* Pin Configuration */
 // Ultrasonic Sensor
 #define ULTRASONIC_1_TRIG 2
@@ -19,6 +21,6 @@
 #define ULTRASONIC_3_ECHO 7
 
 // SD Card Reader
-#define SD_CARD_CS 10              // SD card Chip Select (set to 10 by default)
+#define SD_CARD_CS 10               // SD card Chip Select (set to 10 by default)
 
 #endif
