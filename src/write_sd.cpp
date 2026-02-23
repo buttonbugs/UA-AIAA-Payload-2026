@@ -14,6 +14,7 @@ int file_id = 0;
 char file_name[13] = "data_000.csv";
 
 void init_sensors() {
+    Serial.print("Initializing Sensors...");
     init_ozone();
     init_sgp40();
     init_imu();
@@ -79,6 +80,7 @@ void file_size_test(bool file_change = false) {
 }
 
 void init_sd() {
+    init_sensors();
     Serial.print("Initializing SD card...");
     if (!SD.begin(SD_CARD_CS)) {
         Serial.println("initialization failed!");
@@ -99,6 +101,8 @@ void write_sd() {
     file_size_test();
     dataFile = SD.open(file_name, FILE_WRITE);
     if (dataFile) {
+        Serial.println("Start writing file");
+        Serial.println("Start writing file - 2");
         dataFile.print("\"Timestamp (ms)\",");
         
         // Timestamps
@@ -113,9 +117,12 @@ void write_sd() {
         dataFile.print(read_sgp40());
         dataFile.print(",");
         
+        Serial.println("Start writing file - 3");
         // IMU
         read_imu();
+        Serial.println("Start writing file - 4");
         write_sd_E(imu_accX);
+        Serial.println("Start writing file - 5");
         write_sd_E(imu_accY);
         write_sd_E(imu_accZ);
         write_sd_E(imu_gyrX);
@@ -142,5 +149,8 @@ void write_sd() {
         // New line
         dataFile.print("\n");
         dataFile.close();               // Crucial: Always close to save data
+        Serial.println("Finish writing file");
+    } else {
+        Serial.println("Unable to write the file");
     }
 }
