@@ -49,31 +49,34 @@ void write_column_headers(){
         dataFile.print("\n");
         dataFile.close();               // Crucial: Always close to save data
         Serial.println("CSV File Column Headers Added");
+    } else {
+        Serial.println("Unable to add column headers");
     }
 }
 
-void file_size_test(bool file_change = false) {
+void file_size_test(bool add_column_headers) {
     uint32_t file_size = 0;
-    dataFile = SD.open(file_name);
+    dataFile = SD.open(file_name, FILE_WRITE);
     if (dataFile) {
         file_size = dataFile.size();
         dataFile.close();                   // Crucial: Always close to save data
     } else {
+        Serial.print("file_size_test() failed.");
         return;
     }
     while (file_size >= FILE_SIZE_LIMIT) {      // create another data file when the current file size exceeds FILE_SIZE_LIMIT
-        file_change = true;
+        add_column_headers = true;
         file_id++;
         sprintf(file_name, "data_%03d.csv", file_id);
 
         // Get file size
-        dataFile = SD.open(file_name);
+        dataFile = SD.open(file_name, FILE_WRITE);
         if (dataFile) {
             file_size = dataFile.size();
             dataFile.close();               // Crucial: Always close to save data
         }
     }
-    if (file_change) {
+    if (add_column_headers) {
         write_column_headers();
     }
     
@@ -91,14 +94,14 @@ void init_sd() {
 }
 
 void write_sd_E(float data) {
-    char sciBuffer[E_DECIMAL_PLACE + 7];                    // Buffer to hold the converted scientific notation text
+    char sciBuffer[E_DECIMAL_PLACE + 6];                    // Buffer to hold the converted scientific notation text
     dtostre(data, sciBuffer, E_DECIMAL_PLACE, 'E');         // Convert data to scientific notation with 6 decimal places
     dataFile.print(sciBuffer);          // Writes "1.23E+02" to the file
     dataFile.print(",");
 }
 
 void write_sd() {
-    file_size_test();
+    file_size_test(false);
     dataFile = SD.open(file_name, FILE_WRITE);
     if (dataFile) {
         Serial.println("Start writing file");

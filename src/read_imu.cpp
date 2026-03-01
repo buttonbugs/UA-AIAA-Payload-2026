@@ -20,9 +20,7 @@ void init_imu() {
     if (myICM.status != ICM_20948_Stat_Ok) {
         Serial.println("IMU Sensor not found!");
     }
-    while (!myICM.dataReady()) {
-        /* code */
-    }
+    while (!myICM.dataReady());
     
 }
 

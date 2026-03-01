@@ -1,14 +1,17 @@
-#include "config.h"
-#include "SGP40.h"
+#include <Wire.h>
+#include <Adafruit_SGP40.h>
 #include "Arduino.h"
 
+Adafruit_SGP40 sgp;
 
 void init_sgp40() {
-    if(SGP40_Init() != 0){
-        Serial.println("Connecting to SGP40");
+    if (! sgp.begin()){
+        Serial.println("SGP40 Sensor not found");
     }
+    
+    Serial.println("SGP40 Sensor connected.");
 }
 
-uint8_t read_sgp40() {
-    return SGP40_MeasureVOC(25, 50);
+int32_t read_sgp40() {
+    return sgp.measureVocIndex();
 }
