@@ -91,8 +91,8 @@ void init_sd() {
 }
 
 void write_sd_E(float data) {
-    char * sciBuffer;                   // Buffer to hold the converted scientific notation text
-    dtostre(data, sciBuffer, E_DECIMAL_PLACE, 'E');   // Convert data to scientific notation with 6 decimal places
+    char sciBuffer[E_DECIMAL_PLACE + 7];                    // Buffer to hold the converted scientific notation text
+    dtostre(data, sciBuffer, E_DECIMAL_PLACE, 'E');         // Convert data to scientific notation with 6 decimal places
     dataFile.print(sciBuffer);          // Writes "1.23E+02" to the file
     dataFile.print(",");
 }
@@ -102,8 +102,6 @@ void write_sd() {
     dataFile = SD.open(file_name, FILE_WRITE);
     if (dataFile) {
         Serial.println("Start writing file");
-        Serial.println("Start writing file - 2");
-        dataFile.print("\"Timestamp (ms)\",");
         
         // Timestamps
         dataFile.print(millis());
@@ -117,12 +115,9 @@ void write_sd() {
         dataFile.print(read_sgp40());
         dataFile.print(",");
         
-        Serial.println("Start writing file - 3");
         // IMU
         read_imu();
-        Serial.println("Start writing file - 4");
         write_sd_E(imu_accX);
-        Serial.println("Start writing file - 5");
         write_sd_E(imu_accY);
         write_sd_E(imu_accZ);
         write_sd_E(imu_gyrX);
@@ -145,12 +140,12 @@ void write_sd() {
         write_sd_E(read_ultrasonic(ULTRASONIC_2_TRIG, ULTRASONIC_2_ECHO));
         write_sd_E(read_ultrasonic(ULTRASONIC_3_TRIG, ULTRASONIC_3_ECHO));
         */
-       
+
         // New line
         dataFile.print("\n");
         dataFile.close();               // Crucial: Always close to save data
         Serial.println("Finish writing file");
     } else {
-        Serial.println("Unable to write the file");
+        Serial.println("Unable to open the file");
     }
 }
