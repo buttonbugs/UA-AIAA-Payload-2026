@@ -2037,6 +2037,17 @@
 		)
 		(uuid "2412fcb4-4344-4ac3-bea9-1210bd577436")
 	)
+	(text "TODO:\n1. Silkscreen Labels\n2. Current Calculation"
+		(exclude_from_sim no)
+		(at 104.648 38.862 0)
+		(effects
+			(font
+				(size 3 3)
+			)
+			(justify left top)
+		)
+		(uuid "2cf9674b-7ce0-4bf2-a008-0e9875bb3d4f")
+	)
 	(no_connect
 		(at 49.53 39.37)
 		(uuid "0c578c45-1a1d-4ace-af73-f2d8c98fe99c")
