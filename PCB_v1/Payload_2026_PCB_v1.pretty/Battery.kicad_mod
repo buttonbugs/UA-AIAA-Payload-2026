@@ -1,0 +1,131 @@
+(footprint "Battery"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(property "Reference" "REF**"
+		(at 0 -0.5 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "fe5064b3-d9f1-4a69-9daf-5bc236e4cdfd")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
+			)
+		)
+	)
+	(property "Value" "Battery"
+		(at 0 1 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "7a68a1a8-a332-495c-85a2-003670d6c404")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "866cc4ff-a1bb-4194-82d7-2925fd59c327")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "0cc3fcf6-dcaf-42cc-b133-676ed18f09ed")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr through_hole)
+	(fp_rect
+		(start 0 0)
+		(end 7.62 6.35)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.SilkS")
+		(uuid "c3e764cf-ced9-40c9-8e0d-4319e7598264")
+	)
+	(fp_text user "+"
+		(at 2.54 6.985 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "d4f4f574-1943-42fc-880d-a95e316d60ab")
+		(effects
+			(font
+				(size 1.5 1.5)
+				(thickness 0.1)
+			)
+		)
+	)
+	(fp_text user "-"
+		(at 5.08 6.985 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "d8aaade9-d499-4cd6-aa30-bef2461b7acd")
+		(effects
+			(font
+				(size 1.5 1.5)
+				(thickness 0.1)
+			)
+		)
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 2.5 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "5746c175-2e1f-4f2b-8df3-e2339570aded")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" thru_hole rect
+		(at 2.54 3.81)
+		(size 2 2)
+		(drill 1)
+		(layers "*.Cu" "F.Mask" "F.Paste")
+		(remove_unused_layers no)
+		(solder_mask_margin 0)
+		(solder_paste_margin 0)
+		(clearance 0)
+		(thermal_bridge_width 0)
+		(thermal_gap 0)
+		(uuid "7c03b4a7-d231-44fc-a392-1791e7571fa6")
+	)
+	(pad "2" thru_hole circle
+		(at 5.08 3.81)
+		(size 2 2)
+		(drill 1)
+		(layers "*.Cu" "F.Mask" "F.Paste")
+		(remove_unused_layers no)
+		(solder_mask_margin 0)
+		(solder_paste_margin 0)
+		(clearance 0)
+		(thermal_bridge_width 0)
+		(thermal_gap 0)
+		(uuid "e4287eef-6d5a-4fad-b7dc-29cebce9adcd")
+	)
+	(embedded_fonts no)
+)

@@ -1,0 +1,4 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "Payload_2026_PCB_v1")(type "KiCad")(uri "${KIPRJMOD}/Payload_2026_PCB_v1.pretty")(options "")(descr ""))
+)
