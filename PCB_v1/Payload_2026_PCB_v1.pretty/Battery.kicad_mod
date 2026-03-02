@@ -6,7 +6,7 @@
 	(property "Reference" "REF**"
 		(at 0 -0.5 0)
 		(unlocked yes)
-		(layer "F.SilkS")
+		(layer "F.Fab")
 		(uuid "fe5064b3-d9f1-4a69-9daf-5bc236e4cdfd")
 		(effects
 			(font
@@ -16,9 +16,9 @@
 		)
 	)
 	(property "Value" "Battery"
-		(at 0 1 0)
+		(at 3.81 1.27 0)
 		(unlocked yes)
-		(layer "F.Fab")
+		(layer "F.SilkS")
 		(uuid "7a68a1a8-a332-495c-85a2-003670d6c404")
 		(effects
 			(font

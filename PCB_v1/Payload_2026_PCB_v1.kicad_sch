@@ -2690,7 +2690,7 @@
 				)
 			)
 		)
-		(property "Value" "Ultrasonic Sensor 2"
+		(property "Value" "Ultrasonic 2"
 			(at 217.805 116.84 0)
 			(effects
 				(font
@@ -3245,7 +3245,7 @@
 				)
 			)
 		)
-		(property "Value" "Ultrasonic Sensor 1"
+		(property "Value" "Ultrasonic 1"
 			(at 186.055 116.84 0)
 			(effects
 				(font
@@ -3467,7 +3467,7 @@
 				)
 			)
 		)
-		(property "Value" "Ultrasonic Sensor 3"
+		(property "Value" "Ultrasonic 3"
 			(at 249.555 116.84 0)
 			(effects
 				(font

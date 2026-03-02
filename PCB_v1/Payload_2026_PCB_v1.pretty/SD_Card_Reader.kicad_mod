@@ -6,7 +6,7 @@
 	(property "Reference" "REF**"
 		(at 0 -0.5 0)
 		(unlocked yes)
-		(layer "F.SilkS")
+		(layer "F.Fab")
 		(uuid "540da3f8-8401-4c04-b16f-b68da37887d2")
 		(effects
 			(font
@@ -18,7 +18,7 @@
 	(property "Value" "SD_Card_Reader"
 		(at 0 1 0)
 		(unlocked yes)
-		(layer "F.Fab")
+		(layer "F.SilkS")
 		(uuid "d29ce5c1-f127-41c7-8bb1-4dd78bc3d9cb")
 		(effects
 			(font
