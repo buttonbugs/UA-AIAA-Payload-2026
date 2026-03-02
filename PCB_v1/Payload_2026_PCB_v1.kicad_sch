@@ -2037,7 +2037,7 @@
 		)
 		(uuid "2412fcb4-4344-4ac3-bea9-1210bd577436")
 	)
-	(text "TODO:\n1. Silkscreen Labels\n2. Current Calculation"
+	(text "TODO:\n1. Silkscreen Labels\n2. Current Calculation\n3. 2 Types of Pad Colors"
 		(exclude_from_sim no)
 		(at 104.648 38.862 0)
 		(effects
