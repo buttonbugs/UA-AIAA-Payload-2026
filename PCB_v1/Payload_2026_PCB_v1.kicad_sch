@@ -2038,12 +2038,12 @@
 		(uuid "2412fcb4-4344-4ac3-bea9-1210bd577436")
 	)
 	(no_connect
-		(at 31.75 127)
-		(uuid "0a8b52d7-d054-42d9-95d2-c20b951e4cba")
-	)
-	(no_connect
 		(at 49.53 39.37)
 		(uuid "0c578c45-1a1d-4ace-af73-f2d8c98fe99c")
+	)
+	(no_connect
+		(at 31.75 124.46)
+		(uuid "0f25a550-178f-4e31-88f8-97ee4ba1cb32")
 	)
 	(no_connect
 		(at 74.93 59.69)
@@ -2130,16 +2130,6 @@
 			(justify right bottom)
 		)
 		(uuid "022cd34f-c489-4381-a9bb-bf18dd00bbf5")
-	)
-	(label "5V"
-		(at 31.75 124.46 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "042e34a9-979a-44e1-b604-b4bb9e7162e6")
 	)
 	(label "CS"
 		(at 31.75 111.76 0)
@@ -2330,6 +2320,16 @@
 			(justify right bottom)
 		)
 		(uuid "5d5d28b7-946a-4d53-8f17-6a4b5b0c262a")
+	)
+	(label "5V"
+		(at 31.75 127 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "6207eabc-9582-43b7-904a-2737c61afe57")
 	)
 	(label "5V"
 		(at 158.75 119.38 0)
