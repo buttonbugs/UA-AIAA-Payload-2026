@@ -13,10 +13,10 @@ This repository includes the payload codes for the [UA AIAA](https://uaaiaa.org/
 | Libraries             | Installation              |
 | -                     | -                         |
 | DFRobot_OzoneSensor   | [DFRobot Website](https://wiki.dfrobot.com/Gravity_IIC_Ozone_Sensor_(0-10ppm)%20SKU_SEN0321) |
-| ICM_20948             | PlatformIO > Libraries    |
-| Adafruit_BME280       | PlatformIO > Libraries    |
-| SD                    | PlatformIO > Libraries    |
-| Adafruit_SGP40        | PlatformIO > Libraries    |
+| ICM_20948             | PlatformIO &rarr; Libraries    |
+| Adafruit_BME280       | PlatformIO &rarr; Libraries    |
+| SD                    | PlatformIO &rarr; Libraries    |
+| Adafruit_SGP40        | PlatformIO &rarr; Libraries    |
 
 ## Hardware
 
