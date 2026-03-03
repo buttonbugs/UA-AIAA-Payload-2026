@@ -2037,17 +2037,6 @@
 		)
 		(uuid "2412fcb4-4344-4ac3-bea9-1210bd577436")
 	)
-	(text "TODO:\n1. Silkscreen Labels\n2. Current Calculation\n3. 2 Types of Pad Colors"
-		(exclude_from_sim no)
-		(at 104.648 38.862 0)
-		(effects
-			(font
-				(size 3 3)
-			)
-			(justify left top)
-		)
-		(uuid "2cf9674b-7ce0-4bf2-a008-0e9875bb3d4f")
-	)
 	(no_connect
 		(at 49.53 39.37)
 		(uuid "0c578c45-1a1d-4ace-af73-f2d8c98fe99c")
@@ -2059,10 +2048,6 @@
 	(no_connect
 		(at 74.93 59.69)
 		(uuid "1bd071a0-b265-4e93-8f93-8a60d94fd68a")
-	)
-	(no_connect
-		(at 74.93 72.39)
-		(uuid "35cf7d51-04a2-40e6-b06d-51ca4ac522de")
 	)
 	(no_connect
 		(at 74.93 57.15)
@@ -2162,6 +2147,16 @@
 		)
 		(uuid "0ad8c971-e8e2-4f0c-beb3-5fbb02b1ff70")
 	)
+	(label "SW_18020P"
+		(at 74.93 72.39 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "0d79315a-d29c-4c87-9bb9-d84c6c2d8469")
+	)
 	(label "SDA"
 		(at 127 104.14 0)
 		(effects
@@ -2253,7 +2248,7 @@
 		(uuid "3d83d113-ad85-4549-8d92-d658a51349d8")
 	)
 	(label "VIN"
-		(at 31.75 140.97 0)
+		(at 31.75 143.51 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2373,7 +2368,7 @@
 		(uuid "6e99d9df-0d71-4fe9-8355-76b94a2ba6db")
 	)
 	(label "GND"
-		(at 31.75 143.51 0)
+		(at 31.75 146.05 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2621,6 +2616,26 @@
 			(justify left bottom)
 		)
 		(uuid "e1d3225a-3416-4e4a-a412-a81b2811894b")
+	)
+	(label "GND"
+		(at 63.5 146.05 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "e7eba1bb-7bcd-423c-a75d-622af88a6364")
+	)
+	(label "SW_18020P"
+		(at 63.5 143.51 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "e816eeb9-80b8-4ee8-b2a6-ed0ce8b2d681")
 	)
 	(label "VIN"
 		(at 59.69 31.75 90)
@@ -2919,6 +2934,74 @@
 		)
 	)
 	(symbol
+		(lib_id "Connector:Conn_01x02_Pin")
+		(at 58.42 143.51 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "8ecddde4-290b-4f0f-807f-d349498e9da2")
+		(property "Reference" "J10"
+			(at 59.055 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SW-18020P"
+			(at 59.055 140.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Payload_2026_PCB_v1:SW_18020P"
+			(at 58.42 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 58.42 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Generic connector, single row, 01x02, script generated"
+			(at 58.42 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "2cf6c3a8-97cd-436e-b948-64dd08da25c1")
+		)
+		(pin "1"
+			(uuid "4a768f36-6a9e-4b4d-94a6-62f47348899d")
+		)
+		(instances
+			(project "Payload_2026_PCB_v1"
+				(path "/7e572a3c-507c-47f6-a212-f5f78d2e5847"
+					(reference "J10")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Connector:Conn_01x08_Pin")
 		(at 26.67 116.84 0)
 		(unit 1)
@@ -3161,7 +3244,7 @@
 	)
 	(symbol
 		(lib_id "Connector:Conn_01x02_Pin")
-		(at 26.67 140.97 0)
+		(at 26.67 143.51 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -3170,14 +3253,6 @@
 		(fields_autoplaced yes)
 		(uuid "b1c7b309-4cc0-4bec-995c-4f6196a78d25")
 		(property "Reference" "J9"
-			(at 27.305 135.89 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "Battery"
 			(at 27.305 138.43 0)
 			(effects
 				(font
@@ -3185,8 +3260,16 @@
 				)
 			)
 		)
+		(property "Value" "Battery"
+			(at 27.305 140.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(property "Footprint" "Payload_2026_PCB_v1:Battery"
-			(at 26.67 140.97 0)
+			(at 26.67 143.51 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3195,7 +3278,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 26.67 140.97 0)
+			(at 26.67 143.51 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3204,7 +3287,7 @@
 			)
 		)
 		(property "Description" "Generic connector, single row, 01x02, script generated"
-			(at 26.67 140.97 0)
+			(at 26.67 143.51 0)
 			(effects
 				(font
 					(size 1.27 1.27)
