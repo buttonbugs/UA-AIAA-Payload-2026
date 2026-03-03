@@ -8,6 +8,16 @@ This repository includes the payload codes for the [UA AIAA](https://uaaiaa.org/
 
 **Framework:** Arduino
 
+### Libraries
+
+| Libraries             | Installation              |
+| -                     | -                         |
+| DFRobot_OzoneSensor   | [DFRobot Website](https://wiki.dfrobot.com/Gravity_IIC_Ozone_Sensor_(0-10ppm)%20SKU_SEN0321) |
+| ICM_20948             | PlatformIO > Libraries    |
+| Adafruit_BME280       | PlatformIO > Libraries    |
+| SD                    | PlatformIO > Libraries    |
+| Adafruit_SGP40        | PlatformIO > Libraries    |
+
 ## Hardware
 
 ### Pin Configuration
@@ -58,3 +68,8 @@ PCB manufacturer: [JLCPCB](https://jlcpcb.com/)
 ### How to generate Gerber and Drill files in KiCAD 9
 
 See https://jlcpcb.com/help/article/how-to-generate-gerber-and-drill-files-in-kicad-9
+
+## TODO:
+
+- [ ] Vibration sensor test using `attachInterrupt()` (see [Teensy-Independent](https://github.com/buttonbugs/Teensy-Independent/blob/main/src/receiver.h#L62-L65))
+- [ ] Add watchdog
