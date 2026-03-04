@@ -79,4 +79,4 @@ See https://jlcpcb.com/help/article/how-to-generate-gerber-and-drill-files-in-ki
 
 - [ ] Vibration sensor test using `attachInterrupt()` (see [Teensy-Independent](https://github.com/buttonbugs/Teensy-Independent/blob/main/src/receiver.h#L62-L65))
 - [ ] Add watchdog
-    - [ ] GitHub Repo: https://docs.arduino.cc/libraries/watchdog/s
+    - [ ] GitHub Repo: https://docs.arduino.cc/libraries/watchdog/
