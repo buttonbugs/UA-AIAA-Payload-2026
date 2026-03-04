@@ -10,13 +10,14 @@ This repository includes the payload codes for the [UA AIAA](https://uaaiaa.org/
 
 ### Libraries
 
-| Libraries             | Installation              |
-| -                     | -                         |
+| Libraries             | Installation                  |
+| -                     | -                             |
 | DFRobot_OzoneSensor   | [DFRobot Website](https://wiki.dfrobot.com/Gravity_IIC_Ozone_Sensor_(0-10ppm)%20SKU_SEN0321) |
-| ICM_20948             | PlatformIO &rarr; Libraries    |
-| Adafruit_BME280       | PlatformIO &rarr; Libraries    |
-| SD                    | PlatformIO &rarr; Libraries    |
-| Adafruit_SGP40        | PlatformIO &rarr; Libraries    |
+| ICM_20948             | PlatformIO &rarr; Libraries   |
+| Adafruit_BME280       | PlatformIO &rarr; Libraries   |
+| SD                    | PlatformIO &rarr; Libraries   |
+| Adafruit_SGP40        | PlatformIO &rarr; Libraries   |
+| WatchDog              | [Arduino Built-In Library](https://docs.arduino.cc/libraries/watchdog/) |
 
 ## Hardware
 
@@ -41,6 +42,11 @@ This repository includes the payload codes for the [UA AIAA](https://uaaiaa.org/
 | Ultrasonic Sensor 2 | D4 | D5 |
 | Ultrasonic Sensor 3 | D6 | D7 |
 
+**Other Pin Configuration**
+
+| Sensor | Signal Pin |
+| - | - |
+| SW-18010P | A6 |
 
 Reference: [Arduino Nano Every Full Pinout Diagram (Official)](https://content.arduino.cc/assets/Pinout-NANOevery_latest.pdf)
 
@@ -55,7 +61,7 @@ Reference: [Arduino Nano Every Full Pinout Diagram (Official)](https://content.a
 | IMU Sensor | [SparkFun 9DoF IMU Breakout - ICM 20948](https://www.amazon.com/SparkFun-Breakout-ICM-20948-connection-Accelerometer-Magnetometer/dp/B07VNV3WKL/) | 1.95 V - 3.6 V | I²C | Y |
 | BME280 Sensor | [Starry GY-BME280 5V](https://www.amazon.com/Starry-Atmospheric-Pressure-Temperature-GY-BME280/dp/B0DRCNNBF3/) | 5V | I²C | Y |
 | Ultrasonic Sensor | HC-SR04 | 5V | N/A | N |
-| Vibration Sensor | [SW-18020P](https://www.adafruit.com/product/2384) | 5V | N/A | N |
+| Vibration Sensor | [SW-18020P](https://www.adafruit.com/product/2384) | <=12V | N/A | N |
 
 ## PCB
 
@@ -73,3 +79,4 @@ See https://jlcpcb.com/help/article/how-to-generate-gerber-and-drill-files-in-ki
 
 - [ ] Vibration sensor test using `attachInterrupt()` (see [Teensy-Independent](https://github.com/buttonbugs/Teensy-Independent/blob/main/src/receiver.h#L62-L65))
 - [ ] Add watchdog
+    - [ ] GitHub Repo: https://docs.arduino.cc/libraries/watchdog/s
