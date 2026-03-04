@@ -61,7 +61,7 @@ Reference: [Arduino Nano Every Full Pinout Diagram (Official)](https://content.a
 | IMU Sensor | [SparkFun 9DoF IMU Breakout - ICM 20948](https://www.amazon.com/SparkFun-Breakout-ICM-20948-connection-Accelerometer-Magnetometer/dp/B07VNV3WKL/) | 1.95 V - 3.6 V | I²C | Y |
 | BME280 Sensor | [Starry GY-BME280 5V](https://www.amazon.com/Starry-Atmospheric-Pressure-Temperature-GY-BME280/dp/B0DRCNNBF3/) | 5V | I²C | Y |
 | Ultrasonic Sensor | HC-SR04 | 5V | N/A | N |
-| Vibration Sensor | [SW-18020P](https://www.adafruit.com/product/2384) | <=12V | N/A | N |
+| Vibration Sensor | [SW-18020P](https://www.adafruit.com/product/2384) | &le; 12V | N/A | N |
 
 ## PCB
 
