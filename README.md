@@ -1,6 +1,6 @@
 # UA AIAA Payload 2026
 
-This repository includes the payload codes for the [UA AIAA](https://uaaiaa.org/) Rocket Compotition Team.
+This repository includes the payload codes for the [UA AIAA](https://uaaiaa.org/) Rocket Competition Team.
 
 ## Software
 
