@@ -20,6 +20,10 @@
 #define ULTRASONIC_3_TRIG 6
 #define ULTRASONIC_3_ECHO 7
 
+// Vibration Sensor
+#define VIBRATION_SENSOR_1 A6
+#define VIBRATION_SENSOR_2 A7
+
 // SD Card Reader
 #define SD_CARD_CS 10               // SD card Chip Select (set to 10 by default)
 

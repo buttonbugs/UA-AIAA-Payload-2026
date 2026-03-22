@@ -7,6 +7,7 @@
 #include "read_imu.h"
 #include "read_bme280.h"
 #include "read_ultrasonic.h"
+#include "read_vibration.h"
 
 File dataFile;
 
@@ -22,6 +23,7 @@ void init_sensors() {
     init_ultrasonic(ULTRASONIC_1_TRIG, ULTRASONIC_1_ECHO);
     init_ultrasonic(ULTRASONIC_2_TRIG, ULTRASONIC_2_ECHO);
     init_ultrasonic(ULTRASONIC_3_TRIG, ULTRASONIC_3_ECHO);
+    init_vibration_sensor();
 }
 
 void write_column_headers(){
@@ -46,6 +48,8 @@ void write_column_headers(){
         dataFile.print("\"Ultrasonic 1 (ms)\",");
         dataFile.print("\"Ultrasonic 2 (ms)\",");
         dataFile.print("\"Ultrasonic 3 (ms)\",");
+        dataFile.print("\"Vibration 1 Period (ms)\",");
+        dataFile.print("\"Vibration 2 Period (ms)\",");
         dataFile.print("\n");
         dataFile.close();               // Crucial: Always close to save data
         Serial.println("CSV File Column Headers Added");
@@ -141,6 +145,11 @@ void write_sd() {
         write_sd_E(read_ultrasonic(ULTRASONIC_1_TRIG, ULTRASONIC_1_ECHO));
         write_sd_E(read_ultrasonic(ULTRASONIC_2_TRIG, ULTRASONIC_2_ECHO));
         write_sd_E(read_ultrasonic(ULTRASONIC_3_TRIG, ULTRASONIC_3_ECHO));
+
+        dataFile.print(vibration_period_1_ms);
+        dataFile.print(",");
+        dataFile.print(vibration_period_2_ms);
+        dataFile.print(",");
 
         // New line
         dataFile.print("\n");

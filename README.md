@@ -46,7 +46,8 @@ This repository includes the payload codes for the [UA AIAA](https://uaaiaa.org/
 
 | Sensor | Signal Pin |
 | - | - |
-| SW-18010P | A6 |
+| SW-18010P 1 (Horizontal)  | A6 |
+| SW-18010P 2 (Vertical)    | A7 |
 
 Reference: [Arduino Nano Every Full Pinout Diagram (Official)](https://content.arduino.cc/assets/Pinout-NANOevery_latest.pdf)
 
