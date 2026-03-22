@@ -1,15 +1,15 @@
 #ifndef CONFIG
 #define CONFIG
 
-#define FILE_NAME "payload_data_.csv"        // the file that
+#define FILE_SIZE_LIMIT 5E4             // bytes, create another data file when the current file size exceeds the this number; 4GB = 4,294,967,296 bytes > 4E9 bytes
 
-#define FILE_SIZE_LIMIT 5E4         // bytes, create another data file when the current file size exceeds the this number; 4GB = 4,294,967,296 bytes > 4E9 bytes
+#define SAMPLE_ECHOTERVAL 10            // milliseconds per data sample
 
-#define SAMPLE_ECHOTERVAL 10        // milliseconds per data sample
+#define ULTRASONIC_TIMEOUT_US 30000     // microseconds, prevent the code from freezing when unable to get data from the ultrasonic sensor
 
-#define ULTRASONIC_TIMEOUT 30000    // microseconds, prevent the code from freezing when unable to get data from the ultrasonic sensor
+#define VIBRATION_TIMEOUT_MS 1000       // milliseconds, the vibration period will be set to 0 if no vibration is detected within the timeout
 
-#define E_DECIMAL_PLACE 7           // Scientific notation decimal places, Arduino float data types typically provide 6 to 7 decimal digits of precision
+#define E_DECIMAL_PLACE 7               // Scientific notation decimal places, Arduino float data types typically provide 6 to 7 decimal digits of precision
 
 /* Pin Configuration */
 // Ultrasonic Sensor

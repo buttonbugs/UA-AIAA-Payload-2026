@@ -146,6 +146,8 @@ void write_sd() {
         write_sd_E(read_ultrasonic(ULTRASONIC_2_TRIG, ULTRASONIC_2_ECHO));
         write_sd_E(read_ultrasonic(ULTRASONIC_3_TRIG, ULTRASONIC_3_ECHO));
 
+        // Vibration Sensor
+        check_vibration_timeout();
         dataFile.print(vibration_period_1_ms);
         dataFile.print(",");
         dataFile.print(vibration_period_2_ms);
