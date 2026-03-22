@@ -17,5 +17,5 @@ float read_ultrasonic(int trigPin, int echoPin) {
     digitalWrite(trigPin, LOW);
 
     // 3. Read the echoPin; pulseIn returns the travel time in microseconds
-    return pulseIn(echoPin, HIGH, ULTRASONIC_TIMEOUT) / 1000000.0F;
+    return pulseIn(echoPin, HIGH, ULTRASONIC_TIMEOUT) / 1000.0F;
 }

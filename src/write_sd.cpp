@@ -43,9 +43,9 @@ void write_column_headers(){
         dataFile.print("\"BME280 Temperature (C)\",");
         dataFile.print("\"Pressure (Pa)\",");
         dataFile.print("\"Humidity (%RH)\",");
-        dataFile.print("\"Ultrasonic 1 (us)\",");
-        dataFile.print("\"Ultrasonic 2 (us)\",");
-        dataFile.print("\"Ultrasonic 3 (us)\",");
+        dataFile.print("\"Ultrasonic 1 (ms)\",");
+        dataFile.print("\"Ultrasonic 2 (ms)\",");
+        dataFile.print("\"Ultrasonic 3 (ms)\",");
         dataFile.print("\n");
         dataFile.close();               // Crucial: Always close to save data
         Serial.println("CSV File Column Headers Added");
@@ -138,11 +138,9 @@ void write_sd() {
         write_sd_E(bme_humidity);
         
         // Ultrasonic Sensor
-        /* 
         write_sd_E(read_ultrasonic(ULTRASONIC_1_TRIG, ULTRASONIC_1_ECHO));
         write_sd_E(read_ultrasonic(ULTRASONIC_2_TRIG, ULTRASONIC_2_ECHO));
         write_sd_E(read_ultrasonic(ULTRASONIC_3_TRIG, ULTRASONIC_3_ECHO));
-        */
 
         // New line
         dataFile.print("\n");
