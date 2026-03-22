@@ -2110,10 +2110,6 @@
 		(uuid "a86e0bd3-7819-429c-8830-7d48b1143a38")
 	)
 	(no_connect
-		(at 74.93 74.93)
-		(uuid "c7f01727-d92b-40e7-97f1-16fb206d3d7f")
-	)
-	(no_connect
 		(at 49.53 59.69)
 		(uuid "ce07030d-8ec9-4496-9397-23c99727935a")
 	)
@@ -2147,7 +2143,7 @@
 		)
 		(uuid "0ad8c971-e8e2-4f0c-beb3-5fbb02b1ff70")
 	)
-	(label "SW_18020P"
+	(label "SW_18020P_1"
 		(at 74.93 72.39 0)
 		(effects
 			(font
@@ -2377,6 +2373,26 @@
 		)
 		(uuid "70874b8b-a2c4-4b84-a875-bec9ef95357d")
 	)
+	(label "SW_18020P_1"
+		(at 63.5 143.51 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "7551ebec-d6f7-4b17-a640-19d3f391dfd8")
+	)
+	(label "GND"
+		(at 95.25 146.05 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "75b3c88b-723c-4de9-9a28-9775a3ad697f")
+	)
 	(label "GND"
 		(at 254 127 0)
 		(effects
@@ -2447,6 +2463,16 @@
 		)
 		(uuid "a17ef735-6c0b-436c-b8b6-40df44ba5a4c")
 	)
+	(label "SW_18020P_2"
+		(at 74.93 74.93 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "a2e39c33-b72e-4e79-bdf8-4ddd73899286")
+	)
 	(label "SCL"
 		(at 127 106.68 0)
 		(effects
@@ -2486,6 +2512,16 @@
 			(justify left bottom)
 		)
 		(uuid "aadb9712-eb02-41cd-ae6d-5d54367bd6cb")
+	)
+	(label "SW_18020P_2"
+		(at 95.25 143.51 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "b12c72fe-4b23-488f-913e-309d198c5b4d")
 	)
 	(label "SDA"
 		(at 158.75 127 0)
@@ -2627,16 +2663,6 @@
 		)
 		(uuid "e7eba1bb-7bcd-423c-a75d-622af88a6364")
 	)
-	(label "SW_18020P"
-		(at 63.5 143.51 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "e816eeb9-80b8-4ee8-b2a6-ed0ce8b2d681")
-	)
 	(label "VIN"
 		(at 59.69 31.75 90)
 		(effects
@@ -2756,6 +2782,74 @@
 			(project "Payload_2026_PCB_v1"
 				(path "/7e572a3c-507c-47f6-a212-f5f78d2e5847"
 					(reference "J7")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:Conn_01x02_Pin")
+		(at 90.17 143.51 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "397c36cf-2009-44e9-97a3-b71a5a9686a6")
+		(property "Reference" "J11"
+			(at 90.805 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SW-18020P"
+			(at 90.805 140.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Payload_2026_PCB_v1:SW_18020P"
+			(at 90.17 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 90.17 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Generic connector, single row, 01x02, script generated"
+			(at 90.17 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "cb0ffc7d-7534-4688-a74a-d901db628dc9")
+		)
+		(pin "1"
+			(uuid "4bf9d9af-0550-46e6-88e1-5ee19f2854a9")
+		)
+		(instances
+			(project "Payload_2026_PCB_v1"
+				(path "/7e572a3c-507c-47f6-a212-f5f78d2e5847"
+					(reference "J11")
 					(unit 1)
 				)
 			)
