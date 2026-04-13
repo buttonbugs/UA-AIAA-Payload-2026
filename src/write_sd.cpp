@@ -17,9 +17,13 @@ char file_name[13] = "data_000.csv";
 void init_sensors() {
     Serial.print("Initializing Sensors...");
     init_ozone();
+    Serial.println("ozone initialized");
     init_sgp40();
+    Serial.println("sgp40 initialized");
     init_imu();
+    Serial.println("imu initialized");
     init_bme280();
+    Serial.println("bme280 initialized");
     init_ultrasonic(ULTRASONIC_1_TRIG, ULTRASONIC_1_ECHO);
     init_ultrasonic(ULTRASONIC_2_TRIG, ULTRASONIC_2_ECHO);
     init_ultrasonic(ULTRASONIC_3_TRIG, ULTRASONIC_3_ECHO);
