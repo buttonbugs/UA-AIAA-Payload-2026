@@ -487,10 +487,10 @@
       "gencad": "",
       "idf": "",
       "netlist": "",
-      "plot": "",
+      "plot": "Antenna_PCB_v1_gerber",
       "pos_files": "",
       "specctra_dsn": "",
-      "step": "",
+      "step": "Antenna_PCB_v1.step",
       "svg": "",
       "vrml": ""
     },

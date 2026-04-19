@@ -4,6 +4,9 @@
 	(generator_version "9.0")
 	(uuid "5024d10e-9550-4469-87cc-7b555f45ca7d")
 	(paper "A4")
+	(title_block
+		(title "UA AIAA Payload 2026 Antenna PCB")
+	)
 	(lib_symbols
 		(symbol "Connector:Conn_Coaxial_Power"
 			(pin_names
@@ -626,17 +629,32 @@
 			(embedded_fonts no)
 		)
 	)
-	(junction
-		(at 63.5 63.5)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "8c3d0a3e-1e88-4c2d-ba6f-212416adde29")
+	(text "Notes:\n\nTX:\n0.5nH\n1.5pF\n\nRX:\n0.8nH\n2.2pF"
+		(exclude_from_sim no)
+		(at 12.7 12.7 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left top)
+		)
+		(uuid "070ac2a2-087b-4ed6-b32d-f60edc1b0ee7")
 	)
 	(junction
-		(at 127 63.5)
+		(at 63.5 62.23)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "cab59702-fe74-4b75-9e93-f67e23d9fdec")
+		(uuid "a2a3ab9d-9720-4283-95d8-d1cc2779336a")
+	)
+	(wire
+		(pts
+			(xy 114.3 71.12) (xy 114.3 62.23)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "048dffd1-0ec7-4264-ad69-02664930109e")
 	)
 	(wire
 		(pts
@@ -650,23 +668,23 @@
 	)
 	(wire
 		(pts
-			(xy 63.5 63.5) (xy 82.55 63.5)
+			(xy 114.3 62.23) (xy 109.22 62.23)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "22119341-2b51-4a37-a7bb-357609a70175")
+		(uuid "23ee34ff-1c1c-4a9d-8fdb-2f62b8e7e490")
 	)
 	(wire
 		(pts
-			(xy 101.6 63.5) (xy 90.17 63.5)
+			(xy 81.28 62.23) (xy 63.5 62.23)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "478b1c3b-8512-4446-aabb-51551ad42ed2")
+		(uuid "2e75e29c-5bef-4a6f-b954-d4245e05df93")
 	)
 	(wire
 		(pts
@@ -677,16 +695,6 @@
 			(type default)
 		)
 		(uuid "53d1411a-197a-4106-8222-ae5a48f42251")
-	)
-	(wire
-		(pts
-			(xy 109.22 63.5) (xy 127 63.5)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "618d8634-7567-49bc-88bb-ec3144569d54")
 	)
 	(wire
 		(pts
@@ -710,7 +718,17 @@
 	)
 	(wire
 		(pts
-			(xy 63.5 50.8) (xy 63.5 63.5)
+			(xy 63.5 62.23) (xy 63.5 63.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a4627724-40e1-4c07-825a-4acd731fff3a")
+	)
+	(wire
+		(pts
+			(xy 63.5 50.8) (xy 63.5 62.23)
 		)
 		(stroke
 			(width 0)
@@ -718,9 +736,85 @@
 		)
 		(uuid "bfe9676e-1dd1-440d-a74c-28107808c836")
 	)
+	(wire
+		(pts
+			(xy 88.9 62.23) (xy 101.6 62.23)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fe0aa379-1219-4b1b-9921-3988d2ef6767")
+	)
+	(symbol
+		(lib_id "power:GNDREF")
+		(at 114.3 71.12 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "103804df-a9b0-4737-8fa9-b4d4714d2ff3")
+		(property "Reference" "#PWR03"
+			(at 114.3 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GNDREF"
+			(at 114.3 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 114.3 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 114.3 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GNDREF\" , reference supply ground"
+			(at 114.3 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "335a32f2-374c-43e1-8cea-7f74c5427224")
+		)
+		(instances
+			(project ""
+				(path "/5024d10e-9550-4469-87cc-7b555f45ca7d"
+					(reference "#PWR03")
+					(unit 1)
+				)
+			)
+		)
+	)
 	(symbol
 		(lib_id "Device:C")
-		(at 86.36 63.5 90)
+		(at 85.09 62.23 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -729,7 +823,7 @@
 		(fields_autoplaced yes)
 		(uuid "1c6c08f9-3e42-4f9d-aa19-4eff60b399e8")
 		(property "Reference" "C2"
-			(at 86.36 55.88 90)
+			(at 85.09 54.61 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -737,7 +831,7 @@
 			)
 		)
 		(property "Value" "C"
-			(at 86.36 58.42 90)
+			(at 85.09 57.15 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -745,7 +839,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
-			(at 90.17 62.5348 0)
+			(at 88.9 61.2648 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -754,7 +848,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 86.36 63.5 0)
+			(at 85.09 62.23 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -763,7 +857,7 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
-			(at 86.36 63.5 0)
+			(at 85.09 62.23 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -907,7 +1001,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "134ee613-4ad9-4415-abf7-b07189b32bfd")
+			(uuid "134ee613-4ad9-4415-abf7-b07189b32bfe")
 		)
 		(instances
 			(project ""
@@ -1126,7 +1220,7 @@
 	)
 	(symbol
 		(lib_id "Device:L")
-		(at 105.41 63.5 90)
+		(at 105.41 62.23 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -1135,7 +1229,7 @@
 		(fields_autoplaced yes)
 		(uuid "eefb5fb8-b2b9-424e-9223-0f21b737e14c")
 		(property "Reference" "L2"
-			(at 105.41 58.42 90)
+			(at 105.41 57.15 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1143,7 +1237,7 @@
 			)
 		)
 		(property "Value" "L"
-			(at 105.41 60.96 90)
+			(at 105.41 59.69 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1151,7 +1245,7 @@
 			)
 		)
 		(property "Footprint" "Inductor_SMD:L_0402_1005Metric"
-			(at 105.41 63.5 0)
+			(at 105.41 62.23 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1160,7 +1254,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 105.41 63.5 0)
+			(at 105.41 62.23 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1169,7 +1263,7 @@
 			)
 		)
 		(property "Description" "Inductor"
-			(at 105.41 63.5 0)
+			(at 105.41 62.23 0)
 			(effects
 				(font
 					(size 1.27 1.27)
