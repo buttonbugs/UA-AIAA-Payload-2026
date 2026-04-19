@@ -1,7 +1,7 @@
 #ifndef CONFIG
 #define CONFIG
 
-#define FILE_SIZE_LIMIT 5E4             // bytes, create another data file when the current file size exceeds the this number; 4GB = 4,294,967,296 bytes > 4E9 bytes
+#define FILE_SIZE_LIMIT 4E9             // bytes, create another data file when the current file size exceeds the this number; 4GB = 4,294,967,296 bytes > 4E9 bytes
 
 #define SAMPLE_ECHOTERVAL 10            // milliseconds per data sample
 

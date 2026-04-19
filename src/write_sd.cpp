@@ -106,6 +106,8 @@ void write_sd_E(float data) {
     dtostre(data, sciBuffer, E_DECIMAL_PLACE, 'E');         // Convert data to scientific notation with 6 decimal places
     dataFile.print(sciBuffer);          // Writes "1.23E+02" to the file
     dataFile.print(",");
+    Serial.print(sciBuffer);
+    Serial.print("\t");
 }
 
 void write_sd() {
@@ -117,14 +119,20 @@ void write_sd() {
         // Timestamps
         dataFile.print(millis());
         dataFile.print(",");
+        Serial.print(millis());
+        Serial.print("\t");
         
         // Ozone
         dataFile.print(read_ozone());
         dataFile.print(",");
+        Serial.print(read_ozone());
+        Serial.print("\t");
         
         // Air quality (VOC)
         dataFile.print(read_sgp40());
         dataFile.print(",");
+        Serial.print(read_sgp40());
+        Serial.print("\t");
         
         // IMU
         read_imu();
@@ -156,6 +164,10 @@ void write_sd() {
         dataFile.print(",");
         dataFile.print(vibration_period_2_ms);
         dataFile.print(",");
+        Serial.print(vibration_period_1_ms);
+        Serial.print("\t");
+        Serial.print(vibration_period_2_ms);
+        Serial.print("\n");
 
         // New line
         dataFile.print("\n");
