@@ -641,20 +641,10 @@
 		(uuid "070ac2a2-087b-4ed6-b32d-f60edc1b0ee7")
 	)
 	(junction
-		(at 63.5 62.23)
+		(at 113.03 50.8)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "a2a3ab9d-9720-4283-95d8-d1cc2779336a")
-	)
-	(wire
-		(pts
-			(xy 114.3 71.12) (xy 114.3 62.23)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "048dffd1-0ec7-4264-ad69-02664930109e")
+		(uuid "f6b58ee1-c913-4f61-a904-ac2bc7f0adab")
 	)
 	(wire
 		(pts
@@ -668,23 +658,13 @@
 	)
 	(wire
 		(pts
-			(xy 114.3 62.23) (xy 109.22 62.23)
+			(xy 113.03 50.8) (xy 127 50.8)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "23ee34ff-1c1c-4a9d-8fdb-2f62b8e7e490")
-	)
-	(wire
-		(pts
-			(xy 81.28 62.23) (xy 63.5 62.23)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "2e75e29c-5bef-4a6f-b954-d4245e05df93")
+		(uuid "30a5def0-bd5a-41fe-b941-839b02a767a0")
 	)
 	(wire
 		(pts
@@ -698,17 +678,7 @@
 	)
 	(wire
 		(pts
-			(xy 127 50.8) (xy 127 63.5)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "7f79b7f1-3d15-485c-95fd-ba466b514095")
-	)
-	(wire
-		(pts
-			(xy 109.22 50.8) (xy 127 50.8)
+			(xy 109.22 50.8) (xy 113.03 50.8)
 		)
 		(stroke
 			(width 0)
@@ -718,37 +688,17 @@
 	)
 	(wire
 		(pts
-			(xy 63.5 62.23) (xy 63.5 63.5)
+			(xy 113.03 74.93) (xy 113.03 66.04)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "a4627724-40e1-4c07-825a-4acd731fff3a")
-	)
-	(wire
-		(pts
-			(xy 63.5 50.8) (xy 63.5 62.23)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "bfe9676e-1dd1-440d-a74c-28107808c836")
-	)
-	(wire
-		(pts
-			(xy 88.9 62.23) (xy 101.6 62.23)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "fe0aa379-1219-4b1b-9921-3988d2ef6767")
+		(uuid "abc92847-ae9f-4503-b26e-7c0046d143f2")
 	)
 	(symbol
 		(lib_id "power:GNDREF")
-		(at 114.3 71.12 0)
+		(at 113.03 74.93 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -757,7 +707,7 @@
 		(fields_autoplaced yes)
 		(uuid "103804df-a9b0-4737-8fa9-b4d4714d2ff3")
 		(property "Reference" "#PWR03"
-			(at 114.3 77.47 0)
+			(at 113.03 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -766,7 +716,7 @@
 			)
 		)
 		(property "Value" "GNDREF"
-			(at 114.3 76.2 0)
+			(at 113.03 80.01 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -774,7 +724,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 114.3 71.12 0)
+			(at 113.03 74.93 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -783,7 +733,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 114.3 71.12 0)
+			(at 113.03 74.93 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -792,7 +742,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GNDREF\" , reference supply ground"
-			(at 114.3 71.12 0)
+			(at 113.03 74.93 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -804,7 +754,7 @@
 			(uuid "335a32f2-374c-43e1-8cea-7f74c5427224")
 		)
 		(instances
-			(project ""
+			(project "Antenna_PCB_v1"
 				(path "/5024d10e-9550-4469-87cc-7b555f45ca7d"
 					(reference "#PWR03")
 					(unit 1)
@@ -814,7 +764,7 @@
 	)
 	(symbol
 		(lib_id "Device:C")
-		(at 85.09 62.23 90)
+		(at 113.03 54.61 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -823,23 +773,25 @@
 		(fields_autoplaced yes)
 		(uuid "1c6c08f9-3e42-4f9d-aa19-4eff60b399e8")
 		(property "Reference" "C2"
-			(at 85.09 54.61 90)
+			(at 116.84 53.3399 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
 		(property "Value" "C"
-			(at 85.09 57.15 90)
+			(at 116.84 55.8799 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
-			(at 88.9 61.2648 0)
+			(at 113.9952 58.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -848,7 +800,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 85.09 62.23 0)
+			(at 113.03 54.61 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -857,7 +809,7 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
-			(at 85.09 62.23 0)
+			(at 113.03 54.61 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -882,7 +834,7 @@
 	)
 	(symbol
 		(lib_id "power:GNDREF")
-		(at 127 71.12 0)
+		(at 127 58.42 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -891,7 +843,7 @@
 		(fields_autoplaced yes)
 		(uuid "4d6fa932-291f-4a53-8855-3cda803b7aac")
 		(property "Reference" "#PWR02"
-			(at 127 77.47 0)
+			(at 127 64.77 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -900,7 +852,7 @@
 			)
 		)
 		(property "Value" "GNDREF"
-			(at 127 76.2 0)
+			(at 127 63.5 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -908,7 +860,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 127 71.12 0)
+			(at 127 58.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -917,7 +869,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 127 71.12 0)
+			(at 127 58.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -926,7 +878,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GNDREF\" , reference supply ground"
-			(at 127 71.12 0)
+			(at 127 58.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -948,7 +900,7 @@
 	)
 	(symbol
 		(lib_id "power:GNDREF")
-		(at 63.5 71.12 0)
+		(at 63.5 58.42 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -957,7 +909,7 @@
 		(fields_autoplaced yes)
 		(uuid "8b06616f-4bc6-470f-b696-2c0c9c91861d")
 		(property "Reference" "#PWR01"
-			(at 63.5 77.47 0)
+			(at 63.5 64.77 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -966,7 +918,7 @@
 			)
 		)
 		(property "Value" "GNDREF"
-			(at 63.5 76.2 0)
+			(at 63.5 63.5 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -974,7 +926,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 63.5 71.12 0)
+			(at 63.5 58.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -983,7 +935,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 63.5 71.12 0)
+			(at 63.5 58.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -992,7 +944,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GNDREF\" , reference supply ground"
-			(at 63.5 71.12 0)
+			(at 63.5 58.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1014,7 +966,7 @@
 	)
 	(symbol
 		(lib_id "Connector:Conn_Coaxial_Power")
-		(at 63.5 66.04 0)
+		(at 63.5 53.34 0)
 		(mirror y)
 		(unit 1)
 		(exclude_from_sim no)
@@ -1023,7 +975,7 @@
 		(dnp no)
 		(uuid "8d997a80-a2f8-4bc9-8d06-19da04c8a3c0")
 		(property "Reference" "J1"
-			(at 60.96 66.2939 0)
+			(at 60.96 53.5939 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1032,7 +984,7 @@
 			)
 		)
 		(property "Value" "Conn_Coaxial_Power"
-			(at 60.96 68.8339 0)
+			(at 60.96 56.1339 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1041,7 +993,7 @@
 			)
 		)
 		(property "Footprint" "Connector_Coaxial:SMA_Molex_73251-1153_EdgeMount_Horizontal"
-			(at 63.5 67.31 0)
+			(at 63.5 54.61 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1050,7 +1002,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 63.5 67.31 0)
+			(at 63.5 54.61 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1059,7 +1011,7 @@
 			)
 		)
 		(property "Description" "coaxial connector (BNC, SMA, SMB, SMC, Cinch/RCA, LEMO, ...)"
-			(at 63.5 66.04 0)
+			(at 63.5 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1220,7 +1172,7 @@
 	)
 	(symbol
 		(lib_id "Device:L")
-		(at 105.41 62.23 90)
+		(at 113.03 62.23 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -1229,23 +1181,25 @@
 		(fields_autoplaced yes)
 		(uuid "eefb5fb8-b2b9-424e-9223-0f21b737e14c")
 		(property "Reference" "L2"
-			(at 105.41 57.15 90)
+			(at 114.3 60.9599 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
 		(property "Value" "L"
-			(at 105.41 59.69 90)
+			(at 114.3 63.4999 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
 		(property "Footprint" "Inductor_SMD:L_0402_1005Metric"
-			(at 105.41 62.23 0)
+			(at 113.03 62.23 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1254,7 +1208,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 105.41 62.23 0)
+			(at 113.03 62.23 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1263,7 +1217,7 @@
 			)
 		)
 		(property "Description" "Inductor"
-			(at 105.41 62.23 0)
+			(at 113.03 62.23 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1288,7 +1242,7 @@
 	)
 	(symbol
 		(lib_id "Connector:Conn_Coaxial_Power")
-		(at 127 66.04 0)
+		(at 127 53.34 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -1296,7 +1250,7 @@
 		(dnp no)
 		(uuid "f019b048-ea86-4ed9-8f31-f8a7274c9f34")
 		(property "Reference" "J2"
-			(at 129.54 66.2939 0)
+			(at 129.54 53.5939 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1305,7 +1259,7 @@
 			)
 		)
 		(property "Value" "Conn_Coaxial_Power"
-			(at 129.54 68.8339 0)
+			(at 129.54 56.1339 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1314,7 +1268,7 @@
 			)
 		)
 		(property "Footprint" "Connector_Coaxial:SMA_Molex_73251-1153_EdgeMount_Horizontal"
-			(at 127 67.31 0)
+			(at 127 54.61 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1323,7 +1277,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 127 67.31 0)
+			(at 127 54.61 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1332,7 +1286,7 @@
 			)
 		)
 		(property "Description" "coaxial connector (BNC, SMA, SMB, SMC, Cinch/RCA, LEMO, ...)"
-			(at 127 66.04 0)
+			(at 127 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
