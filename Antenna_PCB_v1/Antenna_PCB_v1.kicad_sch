@@ -629,7 +629,7 @@
 			(embedded_fonts no)
 		)
 	)
-	(text "Notes:\n\nTX:\n0.5nH\n1.5pF\n\nRX:\n0.8nH\n2.2pF"
+	(text "Notes:\n\nSmith Chart Calculation:\nhttps://www.youtube.com/watch?v=IgeRHDI-ukc\n\nTX:\n0.5nH\n1.5pF\n\nRX:\n0.8nH\n2.2pF"
 		(exclude_from_sim no)
 		(at 12.7 12.7 0)
 		(effects
