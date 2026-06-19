@@ -6,8 +6,8 @@ from datetime import datetime, timedelta
 
 data_file_prefix = "DATA_"
 data_file_suffix = ".CSV"
-combined_filename = "combined.csv"
-filtered_filename = "filtered.csv"
+combined_filename = "result_combined.csv"
+filtered_filename = "result_filtered.csv"
 config_filename = "config.txt"
 
 def get_py_dir():
@@ -62,8 +62,8 @@ class PayloadData():
         self.data_dir = get_data_dir(self.py_dir, data_folder)
         self.config_file_path = (self.data_dir / config_filename).resolve()
 
-        self.combined_data_path = (self.py_dir / combined_filename).resolve()
-        self.filtered_data_path = (self.py_dir / filtered_filename).resolve()
+        self.combined_data_path = (self.data_dir / combined_filename).resolve()
+        self.filtered_data_path = (self.data_dir / filtered_filename).resolve()
 
         # organize data files
         data_files = get_data_file_path_list(self.data_dir)
