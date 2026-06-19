@@ -173,7 +173,6 @@ def draw_density(data, start=None, end=None, interval=None, output_file=None):
         plt.savefig(output_file, dpi=300, transparent=False, bbox_inches='tight')
     plt.show()
 
-
 if __name__ == "__main__":
 
     # Read payload data
