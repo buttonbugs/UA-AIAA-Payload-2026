@@ -3,14 +3,18 @@
 To calculate the speed of sound ($c$) in humid air, use the Cramer equation or the fundamental Laplace-adiabatic equation adjusted for wet air. The most accurate direct calculation requires finding the isentropic exponent (ratio of specific heats) and the gas constant for the specific air mixture. [^1] [^2] 
 Here is the step-by-step method to calculate it.
 
-------------------------------
-
 ## 1. Find Saturation Vapor Pressure [^3]
 
-First, calculate the saturation vapor pressure of water ($p_{sat}$) in Pascals using the temperature in Kelvin ($T$). You can use the Hardy or Buck equation:
+First, calculate the saturation vapor pressure of water ($p_{sat}$) in Pascals using the temperature in Kelvin ($T_K$) or celsius ($T_C$).
+
+You can use the Hardy or Buck equation:
 
 ```math
-p_{sat} = 611.21 \cdot \exp\left(\frac{17.502 \cdot (T - 273.15)}{T - 32.18}\right)
+\begin{aligned}
+p_{sat} &= 611.21 \cdot \exp\left(\frac{17.502 \cdot (T_K - 273.15)}{T_K - 32.18}\right)
+\\
+p_{sat} &= 611.21 \cdot \exp \left[ \left( 18.678 - \frac{T_C}{234.5} \right) \left( \frac{T_C}{257.14 + T_C} \right) \right]
+\end{aligned}
 ```
 
 ## 2. Determine Actual Vapor Pressure [^4]
@@ -65,7 +69,7 @@ Alternatively, using the gas constant:
 c = \sqrt{\gamma_{mix} \cdot R_{mix} \cdot T}
 ```
 
-## ✅ Speed of Sound Formula Summary
+## Summary
 
 The final speed of sound in humid air is explicitly stated by the thermodynamic relationship:
 
@@ -75,14 +79,14 @@ c = \sqrt{\frac{\gamma_{mix} \cdot p}{\rho}}
 
 Where $c$ is the speed of sound in $\text{m/s}$, $\gamma_{mix}$ is the humidity-adjusted isentropic exponent, $p$ is the air pressure in $\text{Pa}$, and $\rho$ is the air density in $\text{kg/m}^3$. [^10] [^11] 
 
-[^1]: [https://www.researchgate.net](https://www.researchgate.net/publication/352530307_Noise_Control_From_Concept_to_Application)
-[^2]: [https://www.mh-aerotools.de](https://www.mh-aerotools.de/airfoils/perfred.htm)
-[^3]: [https://turn2engineering.com](https://turn2engineering.com/calculators/relative-humidity-calculator)
-[^4]: [https://www.fao.org](https://www.fao.org/4/x0490e/x0490e07.htm)
-[^5]: [https://www.vaia.com](https://www.vaia.com/en-us/textbooks/physics/fluid-mechanics-7-edition/chapter-9/problem-46-a-one-dimensional-isentropic-airflow-has-the-foll/)
-[^6]: [https://en.wikipedia.org](https://en.wikipedia.org/wiki/Density_of_air)
-[^7]: [https://vulcan-cfd.larc.nasa.gov](https://vulcan-cfd.larc.nasa.gov/WebPage/Documentation/AIAA-2004-0267.pdf)
-[^8]: [https://allen.in](https://allen.in/dn/qna/11750513)
-[^9]: [https://allen.in](https://allen.in/dn/qna/648202972)
-[^10]: [https://geo.libretexts.org](https://geo.libretexts.org/Bookshelves/Oceanography/Introduction_to_Physical_Oceanography_%28Stewart%29/03%3A_The_Physical_Setting/3.6%3A_Sound_in_the_Ocean)
-[^11]: [https://basicairdata.eu](https://basicairdata.eu/knowledge-center/background-topics/density-and-air-temperature/)
+[^1]: https://www.researchgate.net/publication/352530307_Noise_Control_From_Concept_to_Application
+[^2]: https://www.mh-aerotools.de/airfoils/perfred.htm
+[^3]: https://turn2engineering.com/calculators/relative-humidity-calculator
+[^4]: https://www.fao.org/4/x0490e/x0490e07.htm
+[^5]: https://www.vaia.com/en-us/textbooks/physics/fluid-mechanics-7-edition/chapter-9/problem-46-a-one-dimensional-isentropic-airflow-has-the-foll/
+[^6]: https://en.wikipedia.org/wiki/Density_of_air
+[^7]: https://vulcan-cfd.larc.nasa.gov/WebPage/Documentation/AIAA-2004-0267.pdf
+[^8]: https://allen.in/dn/qna/11750513
+[^9]: https://allen.in/dn/qna/648202972
+[^10]: https://geo.libretexts.org/Bookshelves/Oceanography/Introduction_to_Physical_Oceanography_%28Stewart%29/03%3A_The_Physical_Setting/3.6%3A_Sound_in_the_Ocean
+[^11]: https://basicairdata.eu/knowledge-center/background-topics/density-and-air-temperature/
