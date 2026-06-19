@@ -4,6 +4,14 @@ import matplotlib.dates as mdates
 import numpy as np
 
 from data_read import PayloadData
+from data_calculation import calculate_speed_of_sound, calculate_density
+
+# Key name used to save the calculation results
+speed_of_sound = "Speed of Sound (m/s)"
+air_density = "Density of Air (kg/m^3)"
+
+# Global configuation
+distance = 0.235        # The distance the sound travels in meters
 
 def draw_acceleration(data, start=None, end=None, interval=None, output_file=None):
 
@@ -148,14 +156,38 @@ def draw_ultrasonic(data, start=None, end=None, interval=None, output_file=None)
         plt.savefig(output_file, dpi=300, transparent=False, bbox_inches='tight')
     plt.show()
 
+def draw_density(data, start=None, end=None, interval=None, output_file=None):
+
+    trim_range = slice(start, end)
+
+    density = data[air_density][trim_range]
+    data_time = data["datetime"][trim_range]
+
+    plt.plot(data_time, density)
+    plt.xticks(rotation=45)     # Rotate labels for better readability
+    plt.xlabel("Timestamp")
+    plt.ylabel("Density of Air (kg/m$^3$)")
+    plt.tight_layout()
+    plt.legend()
+    plt.grid(alpha=0.2)
+    if output_file:
+        plt.savefig(output_file, dpi=300, transparent=False, bbox_inches='tight')
+    plt.show()
+
+
 if __name__ == "__main__":
 
     # Read payload data
     payload_data = PayloadData("testing_20260617142200CDT")
 
+    # Calculate the density of air
+    payload_data.data[speed_of_sound] = calculate_speed_of_sound(payload_data.data, distance)
+    payload_data.data[air_density] = calculate_density(payload_data.data, speed_of_sound_key=speed_of_sound)
+
     # Draw graphs
-    draw_acceleration(payload_data.data, 500, 1000, output_file=(payload_data.data_dir / "graph_acceleration.png"))
-    draw_pressure(payload_data.data, output_file=(payload_data.data_dir / "graph_pressure.png"))
-    draw_temperature(payload_data.data, output_file=(payload_data.data_dir / "graph_temperature.png"))
-    draw_pressure_temp(payload_data.data, output_file=(payload_data.data_dir / "graph_pressure_temp.png"))
-    draw_ultrasonic(payload_data.data, output_file=(payload_data.data_dir / "graph_ultrasonic.png"))
+    # draw_acceleration(payload_data.data, 500, 1000, output_file=(payload_data.data_dir / "graph_acceleration.png"))
+    # draw_pressure(payload_data.data, output_file=(payload_data.data_dir / "graph_pressure.png"))
+    # draw_temperature(payload_data.data, output_file=(payload_data.data_dir / "graph_temperature.png"))
+    # draw_pressure_temp(payload_data.data, output_file=(payload_data.data_dir / "graph_pressure_temp.png"))
+    # draw_ultrasonic(payload_data.data, output_file=(payload_data.data_dir / "graph_ultrasonic.png"))
+    draw_density(payload_data.data, output_file=(payload_data.data_dir / "graph_density.png"))
