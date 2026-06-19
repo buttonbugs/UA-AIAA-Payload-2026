@@ -124,15 +124,15 @@ def draw_ultrasonic(data, start=None, end=None, interval=None, output_file=None)
 
     trim_range = slice(start, end)
 
-    X = data["Ultrasonic 1 (ms)"][trim_range]
-    Y = data["Ultrasonic 2 (ms)"][trim_range]
-    Z = data["Ultrasonic 3 (ms)"][trim_range]
-    average = np.mean([X, Y, Z], axis=0)
+    T_1 = data["Ultrasonic 1 (ms)"][trim_range]
+    T_2 = data["Ultrasonic 2 (ms)"][trim_range]
+    T_3 = data["Ultrasonic 3 (ms)"][trim_range]
+    average = np.mean([T_1, T_2, T_3], axis=0)
     data_time = data["datetime"][trim_range]
 
-    plt.plot(data_time, X, label="Ultrasonic 1")
-    plt.plot(data_time, Y, label="Ultrasonic 2")
-    plt.plot(data_time, Z, label="Ultrasonic 3")
+    plt.plot(data_time, T_1, label="Ultrasonic 1")
+    plt.plot(data_time, T_2, label="Ultrasonic 2")
+    plt.plot(data_time, T_3, label="Ultrasonic 3")
     plt.plot(data_time, average, label="Average", color="black")
 
     if interval:
