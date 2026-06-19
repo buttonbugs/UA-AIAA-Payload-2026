@@ -1,5 +1,6 @@
 from datetime import datetime
 import pandas as pd
+import numpy as np
 from pathlib import Path
 from datetime import datetime, timedelta
 
@@ -78,11 +79,17 @@ class PayloadData():
             self.calculate_abs_time()
 
     def get_dict(self, filtered_data_path):
+        # Read data from csv file
         df = pd.read_csv(filtered_data_path, keep_default_na=True).fillna(0)    # keep_default_na = True: return NaN if empty; keep_default_na = False: return '' if empty; fillna(0) replace NaN with 0
-        self.data = df.to_dict(orient='list')                                   # orient='list': a dictionary of lists; orient='records': a list of dictionaries
+        data_dict = df.to_dict(orient='list')                                   # orient='list': a dictionary of lists; orient='records': a list of dictionaries
+
+        # Convert list to numpy array
+        self.data = {}
+        for key, value in data_dict.items():
+            self.data[key] = np.array(value)
 
     def calculate_abs_time(self):
-        self.data["datetime"] = [self.starting_time + timedelta(milliseconds=timestamp) for timestamp in self.data["Timestamp (ms)"]]
+        self.data["datetime"] = np.array([self.starting_time + timedelta(milliseconds=int(timestamp)) for timestamp in self.data["Timestamp (ms)"]])
 
 if __name__ == "__main__":
     payload_data = PayloadData("testing_20260617142200CDT")
