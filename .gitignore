@@ -16,3 +16,6 @@
 *#auto_saved_files#
 *.zip
 .pio
+
+# Python
+*__pycache__
