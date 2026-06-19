@@ -1,29 +1,83 @@
 from datetime import datetime
-import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
-import pandas as pd
+import numpy as np
 
 from data_read import PayloadData
 
-filtered_data_file = "filtered.csv"
+def draw_accel(data, start=None, end=None, interval=None):
 
+    trim_range = slice(start, end)
 
-# Works with explicit offsets (+HH:MM)
-dt_offset = datetime.fromisoformat("2026-06-15T10:30:00+05:30")
-print(dt_offset)  # 2026-06-15 10:30:00+05:30
+    X = data["Accelerometer X (milli-g)"][trim_range] / 1000
+    Y = data["Accelerometer Y (milli-g)"][trim_range] / 1000
+    Z = data["Accelerometer Z (milli-g)"][trim_range] / 1000
+    magnitude = np.linalg.norm([X, Y, Z], axis=0)
+    data_time = data["datetime"][trim_range]
 
-def draw_accel(data):
-    X = np.array(data["Accelerometer X (milli-g)"]) / 1000
-    Y = np.array(data["Accelerometer Y (milli-g)"]) / 1000
-    Z = np.array(data["Accelerometer Z (milli-g)"]) / 1000
-    plt.plot(data["datetime"], X, label="X (g)")
-    plt.plot(data["datetime"], Y, label="Y (g)")
-    plt.plot(data["datetime"], Z, label="Z (g)")
-    plt.plot(data["datetime"], (X**2 + Y**2 + Z**3)**.5, label="Magnitude (g)", color="black")
+    plt.plot(data_time, X, label="X")
+    plt.plot(data_time, Y, label="Y")
+    plt.plot(data_time, Z, label="Z")
+    plt.plot(data_time, magnitude, label="Magnitude", color="black")
+
+    if interval:
+        plt.gca().xaxis.set_major_locator(mdates.SecondLocator(interval=interval))
+
+    plt.xticks(rotation=45)     # Rotate labels for better readability
+    plt.xlabel("Timestamp")
+    plt.ylabel("Acceleration (g)")
+    plt.tight_layout()
     plt.legend()
+    plt.grid(linewidth = 0.2)
+    plt.show()
+
+def draw_pressure(data, start=None, end=None, interval=None):
+
+    trim_range = slice(start, end)
+
+    pressure = data["Pressure (Pa)"][trim_range]
+    data_time = data["datetime"][trim_range]
+
+    plt.plot(data_time, pressure)
+
+    if interval:
+        plt.gca().xaxis.set_major_locator(mdates.SecondLocator(interval=interval))
+
+    plt.xticks(rotation=45)     # Rotate labels for better readability
+    plt.xlabel("Timestamp")
+    plt.ylabel("Pressure (Pa)")
+    plt.tight_layout()
+    plt.grid(linewidth = 0.2)
+    plt.show()
+
+def draw_ultrasonic(data, start=None, end=None, interval=None):
+
+    trim_range = slice(start, end)
+
+    X = data["Ultrasonic 1 (ms)"][trim_range]
+    Y = data["Ultrasonic 2 (ms)"][trim_range]
+    Z = data["Ultrasonic 3 (ms)"][trim_range]
+    average = np.mean([X, Y, Z], axis=0)
+    data_time = data["datetime"][trim_range]
+
+    plt.plot(data_time, X, label="Ultrasonic 1")
+    plt.plot(data_time, Y, label="Ultrasonic 2")
+    plt.plot(data_time, Z, label="Ultrasonic 3")
+    plt.plot(data_time, average, label="Average", color="black")
+
+    if interval:
+        plt.gca().xaxis.set_major_locator(mdates.SecondLocator(interval=interval))
+
+    plt.xticks(rotation=45)     # Rotate labels for better readability
+    plt.xlabel("Timestamp")
+    plt.ylabel("Ultrasonic (ms)")
+    plt.tight_layout()
+    plt.legend()
+    plt.grid(linewidth = 0.2)
     plt.show()
 
 if __name__ == "__main__":
     payload_data = PayloadData("testing_20260617142200CDT")
-    draw_accel(payload_data.data)
+    draw_accel(payload_data.data, 500, 1000)
+    draw_pressure(payload_data.data)
+    draw_ultrasonic(payload_data.data)
