@@ -28,7 +28,7 @@ def draw_acceleration(data, start=None, end=None, interval=None, output_file=Non
     plt.ylabel("Acceleration (g)")
     plt.tight_layout()
     plt.legend()
-    plt.grid(linewidth = 0.2)
+    plt.grid(alpha=0.2)
     if output_file:
         plt.savefig(output_file, dpi=300, transparent=False, bbox_inches='tight')
     plt.show()
@@ -49,7 +49,7 @@ def draw_pressure(data, start=None, end=None, interval=None, output_file=None):
     plt.xlabel("Timestamp")
     plt.ylabel("Pressure (Pa)")
     plt.tight_layout()
-    plt.grid(linewidth = 0.2)
+    plt.grid(alpha=0.2)
     if output_file:
         plt.savefig(output_file, dpi=300, transparent=False, bbox_inches='tight')
     plt.show()
@@ -143,7 +143,7 @@ def draw_ultrasonic(data, start=None, end=None, interval=None, output_file=None)
     plt.ylabel("Ultrasonic (ms)")
     plt.tight_layout()
     plt.legend()
-    plt.grid(linewidth = 0.2)
+    plt.grid(alpha=0.2)
     if output_file:
         plt.savefig(output_file, dpi=300, transparent=False, bbox_inches='tight')
     plt.show()
