@@ -58,12 +58,12 @@ def draw_temperature(data, start=None, end=None, interval=None, output_file=None
 
     trim_range = slice(start, end)
 
-    pressure_imu = data["IMU Temperature (C)"][trim_range]
-    pressure_bme280 = data["BME280 Temperature (C)"][trim_range]
+    temperature_imu = data["IMU Temperature (C)"][trim_range]
+    temperature_bme280 = data["BME280 Temperature (C)"][trim_range]
     data_time = data["datetime"][trim_range]
 
-    plt.plot(data_time, pressure_imu, label="IMU (Internal Chip Temperature, Inaccurate)")
-    plt.plot(data_time, pressure_bme280, label="BME280 (Environment Temperature, Accurate)")
+    plt.plot(data_time, temperature_imu, label="IMU (Internal Chip Temperature, Inaccurate)")
+    plt.plot(data_time, temperature_bme280, label="BME280 (Environment Temperature, Accurate)")
 
     if interval:
         plt.gca().xaxis.set_major_locator(mdates.SecondLocator(interval=interval))
