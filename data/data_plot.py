@@ -5,7 +5,7 @@ import numpy as np
 
 from data_read import PayloadData
 
-def draw_accel(data, start=None, end=None, interval=None):
+def draw_acceleration(data, start=None, end=None, interval=None, output_file=None):
 
     trim_range = slice(start, end)
 
@@ -29,9 +29,11 @@ def draw_accel(data, start=None, end=None, interval=None):
     plt.tight_layout()
     plt.legend()
     plt.grid(linewidth = 0.2)
+    if output_file:
+        plt.savefig(output_file, dpi=300, transparent=False, bbox_inches='tight')
     plt.show()
 
-def draw_pressure(data, start=None, end=None, interval=None):
+def draw_pressure(data, start=None, end=None, interval=None, output_file=None):
 
     trim_range = slice(start, end)
 
@@ -48,9 +50,35 @@ def draw_pressure(data, start=None, end=None, interval=None):
     plt.ylabel("Pressure (Pa)")
     plt.tight_layout()
     plt.grid(linewidth = 0.2)
+    if output_file:
+        plt.savefig(output_file, dpi=300, transparent=False, bbox_inches='tight')
     plt.show()
 
-def draw_ultrasonic(data, start=None, end=None, interval=None):
+def draw_temperature(data, start=None, end=None, interval=None, output_file=None):
+
+    trim_range = slice(start, end)
+
+    pressure_imu = data["IMU Temperature (C)"][trim_range]
+    pressure_bme280 = data["BME280 Temperature (C)"][trim_range]
+    data_time = data["datetime"][trim_range]
+
+    plt.plot(data_time, pressure_imu, label="IMU")
+    plt.plot(data_time, pressure_bme280, label="BME280")
+
+    if interval:
+        plt.gca().xaxis.set_major_locator(mdates.SecondLocator(interval=interval))
+
+    plt.xticks(rotation=45)     # Rotate labels for better readability
+    plt.xlabel("Timestamp")
+    plt.ylabel("Temperature (C)")
+    plt.tight_layout()
+    plt.legend()
+    plt.grid(linewidth = 0.2)
+    if output_file:
+        plt.savefig(output_file, dpi=300, transparent=False, bbox_inches='tight')
+    plt.show()
+
+def draw_ultrasonic(data, start=None, end=None, interval=None, output_file=None):
 
     trim_range = slice(start, end)
 
@@ -74,10 +102,17 @@ def draw_ultrasonic(data, start=None, end=None, interval=None):
     plt.tight_layout()
     plt.legend()
     plt.grid(linewidth = 0.2)
+    if output_file:
+        plt.savefig(output_file, dpi=300, transparent=False, bbox_inches='tight')
     plt.show()
 
 if __name__ == "__main__":
+
+    # Read payload data
     payload_data = PayloadData("testing_20260617142200CDT")
-    draw_accel(payload_data.data, 500, 1000)
-    draw_pressure(payload_data.data)
-    draw_ultrasonic(payload_data.data)
+
+    # Draw graphs
+    draw_acceleration(payload_data.data, 500, 1000, output_file=(payload_data.data_dir / "graph_acceleration.png"))
+    draw_pressure(payload_data.data, output_file=(payload_data.data_dir / "graph_pressure.png"))
+    draw_temperature(payload_data.data, output_file=(payload_data.data_dir / "graph_temperature.png"))
+    draw_ultrasonic(payload_data.data, output_file=(payload_data.data_dir / "graph_ultrasonic.png"))
