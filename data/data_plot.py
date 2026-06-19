@@ -73,7 +73,49 @@ def draw_temperature(data, start=None, end=None, interval=None, output_file=None
     plt.ylabel("Temperature (C)")
     plt.tight_layout()
     plt.legend()
-    plt.grid(linewidth = 0.2)
+    plt.grid(alpha=0.2)
+    if output_file:
+        plt.savefig(output_file, dpi=300, transparent=False, bbox_inches='tight')
+    plt.show()
+
+def draw_pressure_temp(data, start=None, end=None, interval=None, output_file=None):
+
+    trim_range = slice(start, end)
+
+    # Sample monthly data
+    temperature = data["BME280 Temperature (C)"][trim_range]
+    pressure = data["Pressure (Pa)"][trim_range]
+    data_time = data["datetime"][trim_range]
+
+    # Create the main figure and the first axis (ax1)
+    fig, ax1 = plt.subplots(figsize=(10, 6))
+
+    # Plot Pressure on the primary left y-axis (Dashed Line)
+    ax1.set_xlabel('Timestamp')
+    ax1.set_ylabel('Pressure (Pa)')
+    line1 = ax1.plot(data_time, pressure, color="#1F77B4", linewidth=2, label='Pressure')
+    ax1.tick_params(axis='y')
+
+    # Create the twin axis sharing the same x-axis
+    ax2 = ax1.twinx()
+
+    # Plot Temperature on the secondary right y-axis (Solid Line)
+    ax2.set_ylabel('Temperature (°C)')
+    line2 = ax2.plot(data_time, temperature, color="#FF7F0F", linewidth=2, label='Temperature')
+    ax2.tick_params(axis='y')
+
+    # Combine legends from both axes into a single box
+    lines = line1 + line2
+    labels = [l.get_label() for l in lines]
+    ax1.legend(lines, labels)
+
+    # Add grid lines
+    ax1.grid(alpha=0.2)
+
+    # Title and layout adjustments
+    fig.tight_layout()
+
+    # Display the plot
     if output_file:
         plt.savefig(output_file, dpi=300, transparent=False, bbox_inches='tight')
     plt.show()
@@ -115,4 +157,5 @@ if __name__ == "__main__":
     draw_acceleration(payload_data.data, 500, 1000, output_file=(payload_data.data_dir / "graph_acceleration.png"))
     draw_pressure(payload_data.data, output_file=(payload_data.data_dir / "graph_pressure.png"))
     draw_temperature(payload_data.data, output_file=(payload_data.data_dir / "graph_temperature.png"))
+    draw_pressure_temp(payload_data.data, output_file=(payload_data.data_dir / "graph_pressure_temp.png"))
     draw_ultrasonic(payload_data.data, output_file=(payload_data.data_dir / "graph_ultrasonic.png"))
