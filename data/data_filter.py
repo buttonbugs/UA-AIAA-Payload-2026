@@ -20,7 +20,7 @@ def get_data_file_path_list(data_dir: Path):
     data_files = sorted([f.resolve() for f in data_dir.iterdir() if f.is_file() and f.name.startswith(data_file_prefix) and f.name.endswith(data_file_suffix)], key=lambda f: f.name)
     return data_files
 
-def combine_files(data_files, combined_path: str, filtered_path: str):
+def filter_data(data_files, combined_path: str, filtered_path: str):
 
     # Combine
     combined_str = ""
@@ -49,9 +49,27 @@ def combine_files(data_files, combined_path: str, filtered_path: str):
     with open(filtered_path, "w") as f:
         f.write(filtered_str)
 
+class PayloadData():
+
+    def __init__(self, data_folder:str, load_data:bool = True):
+
+        # dir processing
+        self.py_dir = get_py_dir()
+        self.data_dir = get_data_dir(self.py_dir, data_folder)
+        self.combined_data_path = (self.py_dir / combined_filename).resolve()
+        self.filtered_data_path = (self.py_dir / filtered_filename).resolve()
+
+        # organize data files
+        data_files = get_data_file_path_list(self.data_dir)
+        filter_data(data_files, self.combined_data_path, self.filtered_data_path)
+
+        if load_data:
+            self.get_dict(self.filtered_data_path)
+
+    def get_dict(self, filtered_data_path):
+        df = pd.read_csv(filtered_data_path, keep_default_na=True).fillna(0)      # keep_default_na = True: return NaN if empty; keep_default_na = False: return '' if empty; fillna(0) replace NaN with 0
+        self.dict_list = df.to_dict(orient='records')
+
 if __name__ == "__main__":
-    data_folder = "testing_20260617142200CDT"
-    py_dir = get_py_dir()
-    data_dir = get_data_dir(py_dir, data_folder)
-    data_files = get_data_file_path_list(data_dir)
-    combine_files(data_files, (py_dir / combined_filename).resolve(), (py_dir / filtered_filename).resolve())
+    payload_data = PayloadData("testing_20260617142200CDT")
+    print(payload_data.dict_list[0])
