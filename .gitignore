@@ -2,6 +2,8 @@
 .pio
 .vscode
 *.DS_Store
+*.fseventsd
+*.Spotlight-V100
 
 # KiCad Temp File
 */~*
