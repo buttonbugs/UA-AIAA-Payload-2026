@@ -168,7 +168,6 @@ def draw_density(data, start=None, end=None, interval=None, output_file=None):
     plt.xlabel("Timestamp")
     plt.ylabel("Density of Air (kg/m$^3$)")
     plt.tight_layout()
-    plt.legend()
     plt.grid(alpha=0.2)
     if output_file:
         plt.savefig(output_file, dpi=300, transparent=False, bbox_inches='tight')
@@ -185,9 +184,9 @@ if __name__ == "__main__":
     payload_data.data[air_density] = calculate_density(payload_data.data, speed_of_sound_key=speed_of_sound)
 
     # Draw graphs
-    # draw_acceleration(payload_data.data, 500, 1000, output_file=(payload_data.data_dir / "graph_acceleration.png"))
-    # draw_pressure(payload_data.data, output_file=(payload_data.data_dir / "graph_pressure.png"))
-    # draw_temperature(payload_data.data, output_file=(payload_data.data_dir / "graph_temperature.png"))
-    # draw_pressure_temp(payload_data.data, output_file=(payload_data.data_dir / "graph_pressure_temp.png"))
-    # draw_ultrasonic(payload_data.data, output_file=(payload_data.data_dir / "graph_ultrasonic.png"))
+    draw_acceleration(payload_data.data, 500, 1000, output_file=(payload_data.data_dir / "graph_acceleration.png"))
+    draw_pressure(payload_data.data, output_file=(payload_data.data_dir / "graph_pressure.png"))
+    draw_temperature(payload_data.data, output_file=(payload_data.data_dir / "graph_temperature.png"))
+    draw_pressure_temp(payload_data.data, output_file=(payload_data.data_dir / "graph_pressure_temp.png"))
+    draw_ultrasonic(payload_data.data, output_file=(payload_data.data_dir / "graph_ultrasonic.png"))
     draw_density(payload_data.data, output_file=(payload_data.data_dir / "graph_density.png"))
