@@ -26,10 +26,10 @@ def draw_acceleration(data, start=None, end=None, interval=None, output_file=Non
 
     plt.figure(figsize=figure_size)
 
-    plt.plot(data_time, X, label="X")
-    plt.plot(data_time, Y, label="Y")
-    plt.plot(data_time, Z, label="Z")
-    plt.plot(data_time, magnitude, label="Magnitude", color="black")
+    plt.plot(data_time, X, label="$a_x$")
+    plt.plot(data_time, Y, label="$a_y$")
+    plt.plot(data_time, Z, label="$a_z$")
+    plt.plot(data_time, magnitude, label="$|a|$", color="black")
 
     if interval:
         plt.gca().xaxis.set_major_locator(mdates.SecondLocator(interval=interval))
