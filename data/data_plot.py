@@ -12,6 +12,7 @@ air_density = "Density of Air (kg/m^3)"
 
 # Global configuation
 distance = 0.235        # The distance the sound travels in meters
+figure_size = (10, 6)
 
 def draw_acceleration(data, start=None, end=None, interval=None, output_file=None):
 
@@ -22,6 +23,8 @@ def draw_acceleration(data, start=None, end=None, interval=None, output_file=Non
     Z = data["Accelerometer Z (milli-g)"][trim_range] / 1000
     magnitude = np.linalg.norm([X, Y, Z], axis=0)
     data_time = data["datetime"][trim_range]
+
+    plt.figure(figsize=figure_size)
 
     plt.plot(data_time, X, label="X")
     plt.plot(data_time, Y, label="Y")
@@ -48,6 +51,8 @@ def draw_pressure(data, start=None, end=None, interval=None, output_file=None):
     pressure = data["Pressure (Pa)"][trim_range]
     data_time = data["datetime"][trim_range]
 
+    plt.figure(figsize=figure_size)
+
     plt.plot(data_time, pressure)
 
     if interval:
@@ -69,6 +74,8 @@ def draw_temperature(data, start=None, end=None, interval=None, output_file=None
     temperature_bme280 = data["BME280 Temperature (C)"][trim_range]
     temperature_imu = data["IMU Temperature (C)"][trim_range]
     data_time = data["datetime"][trim_range]
+
+    plt.figure(figsize=figure_size)
 
     plt.plot(data_time, temperature_bme280, label="BME280 (Environment Temperature, Accurate)")
     plt.plot(data_time, temperature_imu, label="IMU (Internal Chip Temperature, Inaccurate)")
@@ -96,7 +103,7 @@ def draw_pressure_temp(data, start=None, end=None, interval=None, output_file=No
     data_time = data["datetime"][trim_range]
 
     # Create the main figure and the first axis (ax1)
-    fig, ax1 = plt.subplots(figsize=(10, 6))
+    fig, ax1 = plt.subplots(figsize=figure_size)
 
     # Plot Pressure on the primary left y-axis (Dashed Line)
     ax1.set_xlabel('Timestamp')
@@ -115,7 +122,7 @@ def draw_pressure_temp(data, start=None, end=None, interval=None, output_file=No
     # Combine legends from both axes into a single box
     lines = line1 + line2
     labels = [l.get_label() for l in lines]
-    ax1.legend(lines, labels)
+    plt.legend(lines, labels)
 
     # Add grid lines
     ax1.grid(alpha=0.2)
@@ -137,6 +144,8 @@ def draw_ultrasonic(data, start=None, end=None, interval=None, output_file=None)
     T_3 = data["Ultrasonic 3 (ms)"][trim_range]
     average = np.mean([T_1, T_2, T_3], axis=0)
     data_time = data["datetime"][trim_range]
+
+    plt.figure(figsize=figure_size)
 
     plt.plot(data_time, T_1, label="Ultrasonic 1")
     plt.plot(data_time, T_2, label="Ultrasonic 2")
@@ -162,6 +171,8 @@ def draw_density(data, start=None, end=None, interval=None, output_file=None):
 
     density = data[air_density][trim_range]
     data_time = data["datetime"][trim_range]
+
+    plt.figure(figsize=figure_size)
 
     plt.plot(data_time, density)
     plt.xticks(rotation=45)     # Rotate labels for better readability
