@@ -141,6 +141,7 @@ def draw_pressure_temp(data, start=None, end=None, interval=None, output_file=No
     ax1.set_ylabel('Pressure (Pa)')
     line1 = ax1.plot(data_time, pressure, color="#1F77B4", linewidth=2, label='Pressure')
     ax1.tick_params(axis='y')
+    ax1.tick_params(axis='x', rotation=45)     # Rotate labels for better readability
     ax1.set_ylim(90560, 90720)
 
     # Create the twin axis sharing the same x-axis
@@ -158,6 +159,10 @@ def draw_pressure_temp(data, start=None, end=None, interval=None, output_file=No
 
     # Add grid lines
     ax1.grid(alpha=0.2)
+
+
+    if interval:
+        plt.gca().xaxis.set_major_locator(mdates.SecondLocator(interval=interval))
 
     # Title and layout adjustments
     fig.tight_layout()
