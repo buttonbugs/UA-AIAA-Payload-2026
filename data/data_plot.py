@@ -83,6 +83,7 @@ def draw_pressure(data, start=None, end=None, interval=None, output_file=None):
 
     plt.figure(figsize=figure_size)
 
+    plt.ylim(90560, 90720)
     plt.plot(data_time, pressure)
 
     if interval:
@@ -140,6 +141,7 @@ def draw_pressure_temp(data, start=None, end=None, interval=None, output_file=No
     ax1.set_ylabel('Pressure (Pa)')
     line1 = ax1.plot(data_time, pressure, color="#1F77B4", linewidth=2, label='Pressure')
     ax1.tick_params(axis='y')
+    ax1.set_ylim(90560, 90720)
 
     # Create the twin axis sharing the same x-axis
     ax2 = ax1.twinx()
