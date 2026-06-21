@@ -217,7 +217,7 @@ def draw_density(data, start=None, end=None, interval=None, output_file=None):
 if __name__ == "__main__":
 
     # Read payload data
-    payload_data = PayloadData("testing_20260617142200CDT")
+    payload_data = PayloadData("rocket_20260618121819CDT")
 
     # Calculate the density of air
     payload_data.data[speed_of_sound] = calculate_speed_of_sound(payload_data.data, distance)
