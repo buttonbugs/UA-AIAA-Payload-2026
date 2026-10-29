@@ -55,7 +55,7 @@ ax2 = ax.twinx()
 fig.patch.set_alpha(0.0)  # Transparent figure background
 ax.patch.set_alpha(0.0)   # Transparent axes background
 
-ax.set_title("T")
+ax.set_title("T-00:00:00.00")
 ax.set_xlabel("Time (s)")
 ax.set_ylabel("Altitude above sea level (ft)")
 ax2.set_ylabel("Acceleration (G)")
@@ -68,14 +68,23 @@ accel_ax_line_placeholder = ax.plot([], [], lw=1.5, color="orange", label="Accel
 accel_line, = ax2.plot([], [], lw=1, color="orange", label="Acceleration")
 ax.legend(frameon=False)
 
-# 3. Animation functions
-def init():
-    gps_line.set_data([], [])
-    return gps_line,
+def format_launch_timer(total_seconds):
+    # Determine the countdown or countup sign
+    sign = "+" if total_seconds >= 0 else "-"
+    
+    # Work with absolute time to calculate components
+    abs_seconds = abs(total_seconds)
+    
+    hours = int(abs_seconds // 3600)
+    minutes = int((abs_seconds % 3600) // 60)
+    seconds = abs_seconds % 60
+    
+    # :05.2f ensures the seconds field is zero-padded to 5 characters total (e.g., 05.20)
+    return f"T{sign}{hours:02d}:{minutes:02d}:{seconds:05.2f}"
 
 def update(frame):
     t = frame / fps - liftoff_time_in_video
-    ax.set_title(f"T{t:+.2f}")
+    ax.set_title(format_launch_timer(t))
 
     # 0. Extract GPS data
     gps_data_index = np.searchsorted(gps_rel_time, t, side='left') - 1
