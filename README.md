@@ -2,7 +2,7 @@
 
 This repository includes the payload codes for the [UA AIAA](https://uaaiaa.org/) Rocket Competition Team.
 
-# Rocket Telemetry Preview
+## Rocket Telemetry Preview
 
 https://github.com/user-attachments/assets/4942b7d6-6c92-4cc4-b603-a3cd3ee1fe55
 
