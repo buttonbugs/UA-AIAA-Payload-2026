@@ -42,26 +42,34 @@ duration = bg_clip.duration
 fps = bg_clip.fps
 
 # 2. Setup Matplotlib Figure with a transparent background
-fig, ax = plt.subplots(figsize=(10.6, 5.6))
+fig, ax = plt.subplots(figsize=(10.6, 5.6))  # 720p: (6.2, 3.6), 1080p: (10.6, 5.6)
+ax2 = ax.twinx()
 fig.patch.set_alpha(0.0)  # Transparent figure background
 ax.patch.set_alpha(0.0)   # Transparent axes background
+
 ax.set_title("T", color='white')
 ax.set_xlabel("Time (s)", color='white')
 ax.set_ylabel("Altitude above sea level (ft)", color='white')
+ax2.set_ylabel("Acceleration (G)", color='white')
+ax.ticklabel_format(style='plain', axis='both')     # Prevent axes from showing scientific notation
 
 # Style the plot lines/labels so they are visible over the video
 # ax.set_xlim(0, 2 * np.pi)
 # ax.set_ylim(-1.5, 1.5)
-ax.tick_params(colors='white')  # White text for dark videos
+ax.tick_params(colors='white')      # White text for dark videos
+ax2.tick_params(colors='white')     # White text for dark videos
 for spine in ax.spines.values():
     spine.set_color('white')
+for spine in ax2.spines.values():
+    spine.set_color('white')
 
-line, = ax.plot([], [], lw=2)
+gps_line, = ax.plot([], [], lw=2)
+accel_line, = ax2.plot([], [], lw=2)
 
 # 3. Animation functions
 def init():
-    line.set_data([], [])
-    return line,
+    gps_line.set_data([], [])
+    return gps_line,
 
 def update(frame):
     t = frame / fps - liftoff_time_in_video
@@ -75,13 +83,13 @@ def update(frame):
     gps_graph_alt = gps_alt[gps_data_index_start: gps_data_index]
 
     # 2. Update the line data
-    line.set_data(gps_graph_t, gps_graph_alt)
+    gps_line.set_data(gps_graph_t, gps_graph_alt)
 
     # 3. DYNAMICALLY RESIZE AXES HERE:
     ax.relim()             # Recalculate data limits based on line.get_data()
     ax.autoscale_view()    # Rescale the view limits to fit those data limits
 
-    return line,
+    return gps_line,
 
 # 4. Create the animation frame-generator function for MoviePy
 # We convert each matplotlib frame into an RGB image array
