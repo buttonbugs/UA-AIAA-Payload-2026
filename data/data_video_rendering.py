@@ -19,6 +19,7 @@ from datetime import datetime
 
 gps_data_path = "data/rocket_gps/66UofA_G_06-18-2026_17_05_35.csv"
 gcsv_data_path = "data/rocket_camera/100RUNCAM/Split4g_0029.csv"
+gcsv_header_path = "data/rocket_camera/100RUNCAM/Split4g_0029.gcsv"
 input_video_path = "data/rocket_camera/Trim/Rocket Camera Recording.mp4"
 output_video_path = "data/rocket_camera/Trim/Rocket Camera Graph.mp4"
 
@@ -34,11 +35,16 @@ gps_alt = np.array(gps_data["TRACKER Alt asl"], dtype=float)
 gps_rel_time = np.array([(datetime.strptime(f"{d} {t}", "%Y-%m-%d %H:%M:%S.%f") - liftoff_dt_in_gps).total_seconds() for d, t in zip(gps_data["DATE"], gps_data["TIME"])], dtype=float)
 gps_data_index_start = np.searchsorted(gps_rel_time, -liftoff_time_in_video, side='left') - 1
 
+with open(gcsv_header_path, "r") as gcsv_file:
+
+    gcsv_header = gcsv_file.read().split("\nt,rx,ry,rz,ax,ay,az\n")[0]
+    ascale = float(gcsv_header.split("\n")[-1].split(",")[-1])
+
 gcsv_data_frame = pd.read_csv(gcsv_data_path, keep_default_na=False)      # keep_default_na = True: return NaN if empty; keep_default_na = False: return '' if empty
 gcsv_data = gcsv_data_frame.to_dict(orient='list')
-gcsv_accel_x = np.array(gcsv_data["ax"], dtype=float) / 2000     # Convert unit to g
-gcsv_accel_y = np.array(gcsv_data["ay"], dtype=float) / 2000     # Convert unit to g
-gcsv_accel_z = np.array(gcsv_data["az"], dtype=float) / 2000     # Convert unit to g
+gcsv_accel_x = np.array(gcsv_data["ax"], dtype=float) * ascale          # Convert unit to g
+gcsv_accel_y = np.array(gcsv_data["ay"], dtype=float) * ascale          # Convert unit to g
+gcsv_accel_z = np.array(gcsv_data["az"], dtype=float) * ascale          # Convert unit to g
 gcsv_accel = np.hypot(np.hypot(gcsv_accel_x, gcsv_accel_y), gcsv_accel_z)       # Calculate magnitude (np.hypot() is faster than np.linalg.norm())
 gcsv_rel_time = (np.array(gcsv_data["t"], dtype=float) - liftoff_time_in_gcsv) / 1000   # Convert ms to s
 gcsv_data_index_start = np.searchsorted(gcsv_rel_time, -liftoff_time_in_video, side='left') - 1
