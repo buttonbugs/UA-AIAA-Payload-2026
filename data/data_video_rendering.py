@@ -144,7 +144,7 @@ graph_clip = graph_clip.with_position(('center', 'center'))
 
 # 6. Composite the clips together and save
 final_clip = CompositeVideoClip([bg_clip, graph_clip])
-final_clip.write_videofile(output_video_path, fps=fps, codec="libx264")
+final_clip.write_videofile(output_video_path, fps=fps, codec="libx264", audio_codec="aac")
 
 # Clean up memory
 plt.close(fig)
