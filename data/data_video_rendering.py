@@ -8,7 +8,7 @@ pip install moviepy
 '''
 
 import matplotlib.pyplot as plt
-from matplotlib.animation import FuncAnimation
+from matplotlib.ticker import StrMethodFormatter
 from moviepy.video.io.VideoFileClip import VideoFileClip
 from moviepy.video.VideoClip import VideoClip
 from moviepy.video.compositing.CompositeVideoClip import CompositeVideoClip
@@ -17,24 +17,31 @@ import numpy as np
 import pandas as pd
 from datetime import datetime
 
-gps_data_path = 'data/rocket_gps/66UofA_G_06-18-2026_17_05_35.csv'
+gps_data_path = "data/rocket_gps/66UofA_G_06-18-2026_17_05_35.csv"
+gcsv_data_path = "data/rocket_camera/100RUNCAM/Split4g_0029.csv"
 input_video_path = "data/rocket_camera/Trim/Rocket Camera Recording.mp4"
 output_video_path = "data/rocket_camera/Trim/Rocket Camera Graph.mp4"
 
 liftoff_time_in_video = 5.15        # seconds
+liftoff_time_in_gcsv = 432984       # ms
 liftoff_time_in_gps = "2026-06-18 17:28:17"
 liftoff_dt_in_gps = datetime.strptime(f"{liftoff_time_in_gps}", "%Y-%m-%d %H:%M:%S")
 
-# 0. Read gps data
+# 0. Read csv data
 gps_data_frame = pd.read_csv(gps_data_path, keep_default_na=False)      # keep_default_na = True: return NaN if empty; keep_default_na = False: return '' if empty
 gps_data = gps_data_frame.to_dict(orient='list')
-gps_alt = np.array(gps_data["TRACKER Alt asl"])
-
-# Time relative to T
-gps_rel_time = np.array([(datetime.strptime(f"{d} {t}", "%Y-%m-%d %H:%M:%S.%f") - liftoff_dt_in_gps).total_seconds() for d, t in zip(gps_data["DATE"], gps_data["TIME"])])
+gps_alt = np.array(gps_data["TRACKER Alt asl"], dtype=float)
+gps_rel_time = np.array([(datetime.strptime(f"{d} {t}", "%Y-%m-%d %H:%M:%S.%f") - liftoff_dt_in_gps).total_seconds() for d, t in zip(gps_data["DATE"], gps_data["TIME"])], dtype=float)
 gps_data_index_start = np.searchsorted(gps_rel_time, -liftoff_time_in_video, side='left') - 1
 
-print(gps_rel_time[-100:])
+gcsv_data_frame = pd.read_csv(gcsv_data_path, keep_default_na=False)      # keep_default_na = True: return NaN if empty; keep_default_na = False: return '' if empty
+gcsv_data = gcsv_data_frame.to_dict(orient='list')
+gcsv_accel_x = np.array(gcsv_data["ax"], dtype=float) / 2000     # Convert unit to g
+gcsv_accel_y = np.array(gcsv_data["ay"], dtype=float) / 2000     # Convert unit to g
+gcsv_accel_z = np.array(gcsv_data["az"], dtype=float) / 2000     # Convert unit to g
+gcsv_accel = np.hypot(np.hypot(gcsv_accel_x, gcsv_accel_y), gcsv_accel_z)       # Calculate magnitude (np.hypot() is faster than np.linalg.norm())
+gcsv_rel_time = (np.array(gcsv_data["t"], dtype=float) - liftoff_time_in_gcsv) / 1000   # Convert ms to s
+gcsv_data_index_start = np.searchsorted(gcsv_rel_time, -liftoff_time_in_video, side='left') - 1
 
 # 1. Load the original background video
 bg_clip = VideoFileClip(input_video_path)
@@ -42,29 +49,24 @@ duration = bg_clip.duration
 fps = bg_clip.fps
 
 # 2. Setup Matplotlib Figure with a transparent background
-fig, ax = plt.subplots(figsize=(10.6, 5.6))  # 720p: (6.2, 3.6), 1080p: (10.6, 5.6)
+plt.style.use('dark_background')                # White font
+fig, ax = plt.subplots(figsize=(10.2, 5.6))  # 720p: (6.2, 3.6), 1080p: (10.6, 5.6)
 ax2 = ax.twinx()
 fig.patch.set_alpha(0.0)  # Transparent figure background
 ax.patch.set_alpha(0.0)   # Transparent axes background
 
-ax.set_title("T", color='white')
-ax.set_xlabel("Time (s)", color='white')
-ax.set_ylabel("Altitude above sea level (ft)", color='white')
-ax2.set_ylabel("Acceleration (G)", color='white')
-ax.ticklabel_format(style='plain', axis='both')     # Prevent axes from showing scientific notation
+ax.set_title("T")
+ax.set_xlabel("Time (s)")
+ax.set_ylabel("Altitude above sea level (ft)")
+ax2.set_ylabel("Acceleration (G)")
+ax.ticklabel_format(style='plain', axis='both', useOffset=False)     # Prevent axes from showing scientific notation
+ax.yaxis.set_major_formatter(StrMethodFormatter('{x:.0f}'))
+ax2.yaxis.set_major_formatter(StrMethodFormatter('{x:.1f}'))
 
-# Style the plot lines/labels so they are visible over the video
-# ax.set_xlim(0, 2 * np.pi)
-# ax.set_ylim(-1.5, 1.5)
-ax.tick_params(colors='white')      # White text for dark videos
-ax2.tick_params(colors='white')     # White text for dark videos
-for spine in ax.spines.values():
-    spine.set_color('white')
-for spine in ax2.spines.values():
-    spine.set_color('white')
-
-gps_line, = ax.plot([], [], lw=2)
-accel_line, = ax2.plot([], [], lw=2)
+gps_line, = ax.plot([], [], lw=1.5, color="red", label="Altitude")
+accel_ax_line_placeholder = ax.plot([], [], lw=1.5, color="orange", label="Acceleration")
+accel_line, = ax2.plot([], [], lw=1, color="orange", label="Acceleration")
+ax.legend(frameon=False)
 
 # 3. Animation functions
 def init():
@@ -73,28 +75,35 @@ def init():
 
 def update(frame):
     t = frame / fps - liftoff_time_in_video
-    ax.set_title(f"T{t:+.2f}", color='white')
+    ax.set_title(f"T{t:+.2f}")
 
     # 0. Extract GPS data
     gps_data_index = np.searchsorted(gps_rel_time, t, side='left') - 1
+    gcsv_data_index = np.searchsorted(gcsv_rel_time, t, side='left') - 1
 
-    # 1. Generate your dynamic data points
-    gps_graph_t = gps_rel_time[gps_data_index_start: gps_data_index]
-    gps_graph_alt = gps_alt[gps_data_index_start: gps_data_index]
+    # 1. Generate dynamic data points
+    gps_graph_t         = gps_rel_time  [gps_data_index_start: gps_data_index]
+    gps_graph_alt       = gps_alt       [gps_data_index_start: gps_data_index]
+
+    gcsv_graph_t        = gcsv_rel_time [gcsv_data_index_start: gcsv_data_index]
+    gcsv_graph_accel    = gcsv_accel    [gcsv_data_index_start: gcsv_data_index]
 
     # 2. Update the line data
     gps_line.set_data(gps_graph_t, gps_graph_alt)
+    accel_line.set_data(gcsv_graph_t, gcsv_graph_accel)
 
     # 3. DYNAMICALLY RESIZE AXES HERE:
     ax.relim()             # Recalculate data limits based on line.get_data()
     ax.autoscale_view()    # Rescale the view limits to fit those data limits
+    ax2.relim()
+    ax2.autoscale_view()
 
-    return gps_line,
+    return gps_line, accel_line
 
 # 4. Create the animation frame-generator function for MoviePy
 # We convert each matplotlib frame into an RGB image array
 def make_frame(t):
-    # t is the current time in seconds. Map it to your animation frames.
+    # t is the current time in seconds. Map it to animation frames.
     frame_number = int(t * fps)
     update(frame_number)
     
