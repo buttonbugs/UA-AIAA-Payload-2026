@@ -6,6 +6,8 @@ This repository includes the payload codes for the [UA AIAA](https://uaaiaa.org/
 
 ### Rocket Launch Data
 
+See YouTube video: https://www.youtube.com/watch?v=IQ9gblNF-8s&list=PLdFZmiWGbxr0
+
 https://github.com/user-attachments/assets/e6d3bb94-cc8a-4640-be77-5c40b0f65d72
 
 ### Rocket Prelaunch Testing
